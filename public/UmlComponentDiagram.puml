@@ -1,0 +1,29 @@
+@startuml Order Taking
+
+[Index] ..> [App]
+[App] ..> [Navi]
+[App] ..> [Dashboard]
+[App] ..> [Footer]
+[Navi] ..> [SearchBar]
+[Navi] ..> [LogInRegisterButtons]
+[Navi] ..> [ProfileButton]
+[Dashboard] ..> [MainPage]
+[MainPage] ..> [JobSeekerMainPage]
+[MainPage] ..> [EmplooyerMainPage]
+[MainPage] ..> [SystemUserMainPage]
+[MainPage] ..> [DefaultMainPage]
+[Dashboard] ..> [AdvertisementDetails]
+[Dashboard] ..> [AdminPanel]
+[Dashboard] ..> [Form]
+[Form] ..> [LogInForm]
+[Form] ..> [RegisterForm]
+[Dashboard] ..> [Profile]
+[Dashboard] ..> [MainAdvertisement]
+[Profile] ..> [JobSeekerProfile]
+[Profile] ..> [EmplooyerProfile]
+[Profile] ..> [SystemUserProfile]
+[MainAdvertisement] ..> [AdvertisementFilter]
+[MainAdvertisement] ..> [AdvertisementList]
+
+
+@enduml
