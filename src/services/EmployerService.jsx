@@ -13,11 +13,13 @@ export default class EmployerService {
         return null;
     }
 
-    getAllEmployers(){
-        return axios.get(this.apiUrl + "getAll")
-    }
-
     updateEmployer(employer){
         return null;
     }
+
+
+    getAllEmployers(){
+        return axios.get(this.apiUrl + "getAll")
+    }
+  
 }

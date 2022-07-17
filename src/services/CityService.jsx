@@ -5,16 +5,17 @@ export default class CityService {
 
     apiUrl = "http://localhost:5050/api/city/";
 
-    getAllCities(){
-        return axios.get(this.apiUrl + "getAll");
-    }
-
     addCity(city){
         return null;
     }
 
     deleteCity(city){
         return null;
+    }
+
+
+    getAllCities(){
+        return axios.get(this.apiUrl + "getAll");
     }
 
 }

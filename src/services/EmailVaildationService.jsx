@@ -13,12 +13,13 @@ export default class EmailValidationService {
         return null;
     }
 
-    getAllEmailValidation(){
-        return axios.get(this.apiUrl + "getAll")
-    }
-
     validate(userId){
         return null;
+    }
+    
+
+    getAllEmailValidation(){
+        return axios.get(this.apiUrl + "getAll")
     }
 
 }

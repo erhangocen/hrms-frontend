@@ -12,6 +12,7 @@ export default class JobAdvertisementRequireSkillService {
     deleteJobAdvertisementRequireSkill(jobAdvertisementRequireSkill){
         return null;
     }
+    
 
     getAllJobAdvertisementRequireSkills(){
         return null;
