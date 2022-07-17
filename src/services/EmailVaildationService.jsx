@@ -6,15 +6,15 @@ export default class EmailValidationService {
     apiUrl = "http://localhost:5050/api/emailValidation/"
 
     addEmailValidation(emailValidation){
-        return null;
+        axios.post(this.apiUrl+"add", emailValidation)
     }
 
     deleteEmailValidation(emailValidation){
-        return null;
+        axios.post(this.apiUrl+"delete", emailValidation)
     }
 
-    validate(userId){
-        return null;
+    validateEmail(userId){
+        axios.post(this.apiUrl+"validate", userId)
     }
     
 

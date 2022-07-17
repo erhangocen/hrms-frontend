@@ -5,15 +5,15 @@ export default class SystemUserService{
     apiUrl = "http://localhost:5050/api/systemUser/";
 
     addSystemUser(systemUser){
-        return null
+        axios.post(this.apiUrl+"add", systemUser)
     }
 
     deleteSystemUser(systemUser){
-        return null
+        axios.post(this.apiUrl+"delete", systemUser)
     }
 
 
     getAllSystemUsers(){
-        return null
+        return axios.get(this.apiUrl+"getAll")
     }
 }

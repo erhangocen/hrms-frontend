@@ -4,19 +4,19 @@ import React, { Component } from 'react'
 export default class JobSeekerSkillService {
     apiUrl = "http://localhost:5050/api/jobSeekerSkill/";
 
-    addJobSeekerSkill(jobSeekerSchool){
-        return null
+    addJobSeekerSkill(jobSeekerSkill){
+        axios.post(this.apiUrl+"add", jobSeekerSkill)
     }
     
-    deleteJobSeekerSkill(jobSeekerSchool){
-        return null
+    deleteJobSeekerSkill(jobSeekerSkill){
+        axios.post(this.apiUrl+"delete",jobSeekerSkill)
     }
 
     getAllJobSeekerSkills(){
-        return null
+        return axios.get(this.apiUrl+"getAll");
     }
 
     getAllJobSeekerSkillsByUserId(id){
-        return null
+        return axios.get(this.apiUrl+"getByUserId"+"?id="+id)
     }
 }

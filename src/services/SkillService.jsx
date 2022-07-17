@@ -5,15 +5,15 @@ export default class SkillService {
     apiUrl = "http://localhost:5050/api/skill/";
 
     addSkill(skill){
-        return null
+        axios.post(this.apiUrl+"add", skill)
     }
 
     deleteSkill(skill){
-        return null
+        axios.post(this.apiUrl+"delete", skill)
     }
 
 
     getAllSkills(){
-        return null
+        return axios.get(this.apiUrl+"getAll")
     }
 }

@@ -5,14 +5,14 @@ export default class LanguageService{
     apiUrl = "http://localhost:5050/api/language/";
 
     addLanguage(language){
-        return null
+        axios.post(this.apiUrl+"add", language)
     }
 
     deleteLanguage(language){
-        return null
+        axios.post(this.apiUrl+"delete", language)
     }
 
     getAllLanguages(){
-        return null
+        return axios.get(this.apiUrl+"getAll")
     }
 }

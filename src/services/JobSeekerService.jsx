@@ -5,32 +5,32 @@ export default class JobSeekerService{
     apiUrl = "http://localhost:5050/api/jobSeeker/";
 
     addJobSeeker(jobSeeker){
-        return null
+        axios.post(this.apiUrl+"add", jobSeeker)
     }
 
     deleteJobSeeker(jobSeeker){
-        return null
+        axios.post(this.apiUrl+"delete", jobSeeker)
     }
 
     updateGithub(userId, link){
-        return null;
+        axios.post(this.apiUrl+"updateGithub?link="+link+"&userId="+userId)
     }
 
     updateLinkedin(userId, link){
-        return null;
+        axios.post(this.apiUrl+"updateLinkedin?link="+link+"&userId="+userId)
     }
 
     updateCoverLetter(userId, coverLetter){
-        return null;
+        axios.post(this.apiUrl+"updateCoverLetter?coverLetter="+coverLetter+"&userId="+userId)
     }
 
 
     getAllJobSeeker(){
-        return null
+        return axios.get(this.apiUrl+"getAll")
     }
 
-    getCvByUserId(id){
-        return null
+    getCvByUserId(userId){
+        return axios.get(this.apiUrl+"getByUserId"+"?userId="+userId)
     }
 
 

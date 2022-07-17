@@ -5,15 +5,15 @@ export default class JobSeekerFavoriteService {
     apiUrl = "http://localhost:5050/api/jobSeekerFavorite/";
 
     addJobSeekerFavorite(jobSeekerFavorite){
-        return null;
+        axios.post(this.apiUrl+"add", jobSeekerFavorite)
     }
 
     deleteJobSeekerFavorite(jobSeekerFavorite){
-        return null;
+        axios.post(this.apiUrl+"delete", jobSeekerFavorite)
     }
 
 
     getAllJobSeekerFavoriteByUserId(id){
-        return null;
+        return axios.get(this.apiUrl+"getByUserId"+"?id="+id)
     }
 }

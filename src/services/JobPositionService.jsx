@@ -5,15 +5,15 @@ export default class JobPositionService {
     apiUrl = "http://localhost:5050/api/jobPosition/";
 
     addJobPosition(jobPosition){
-        return null;
+        axios.post(this.apiUrl+"add",jobPosition)
     }
 
     deleteJobPosition(jobPosition){
-        return null;
+        axios.post(this.apiUrl+"delete", jobPosition)
     }
 
 
     getAllJobPositions(){
-        return null;
+        return axios.get(this.apiUrl+"getAll")
     }
 }

@@ -6,40 +6,40 @@ export default class JobAdvertisementService {
     //Posts
   
     addJobAdvertisement(jobAdvertisement){
-        return null;
+        axios.post(this.apiUrl+"add", jobAdvertisement)
     }
 
     deleteJobAdvertisement(jobAdvertisement){
-        return null;
+        axios.post(this.apiUrl+"delete", jobAdvertisement)
     }
 
     advertisementActiveSetFalse(id){
-        return null;
+        axios.post(this.apiUrl+"advertisementActiveFalse", id)
     }
 
     advertisementActiveSetTrue(id){
-        return null;
+        axios.post(this.apiUrl+"advertisementActiveTrue", id)
     }
 
     //Gets
 
     getAllJobAdvertisement(){
-        return null;
+        return axios.get(this.apiUrl+"getAll")
     }
 
     getAllActiveAdvertisements(){
-        axios.get(this.apiUrl + "getActiveAdvertisements")
+        return axios.get(this.apiUrl + "getActiveAdvertisements")
     }
 
     getAllActiveAdvertisementsByEmployerId(id){
-        return null;
+        return axios.get(this.apiUrl+"getActiveAdvertisementsByEmployer"+"?employerId="+id)
     }
 
     getAllActiveAdvertisementsByDeadlineAsc(){
-        return null;
+        return axios.get(this.apiUrl+"getActiveAdvertisementsByDeadlineAsc")
     }
 
     getAllActiveAdvertisementsByDeadlineDesc(){
-        return null;
+        return axios.get(this.apiUrl+"getActiveAdvertisementsByDeadlineDesc")
     }
 }

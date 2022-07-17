@@ -5,18 +5,18 @@ export default class JobSeekerExperienceService{
     apiUrl = "http://localhost:5050/api/jobSeekerExperience/";
 
     addJobSeekerExperience(jobSeekerExperience){
-        return null;
+        axios.post(this.apiUrl+"add", jobSeekerExperience)
     }
 
     deleteJobSeekerExperience(jobSeekerExperience){
-        return null;
+        axios.post(this.apiUrl+"delete", jobSeekerExperience)
     }
 
     getAllJobSeekerExperience(){
-        return null;
+        return axios.get(this.apiUrl+"getAll")
     }
 
     getAllJobSeekerExperienceByUserId(id){
-        return null;
+        return axios.get(this.apiUrl+"getByUserId"+"?id="+id)
     }
 }

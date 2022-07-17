@@ -6,11 +6,11 @@ export default class CityService {
     apiUrl = "http://localhost:5050/api/city/";
 
     addCity(city){
-        return null;
+        axios.post(this.apiUrl + "add", city)
     }
 
     deleteCity(city){
-        return null;
+        axios.post(this.apiUrl+"delete", city)
     }
 
 

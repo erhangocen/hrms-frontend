@@ -5,18 +5,18 @@ export default class JobSeekerSchoolService {
     apiUrl = "http://localhost:5050/api/jobSeekerSchool/";
 
     addJobSeekerSchool(jobSeekerSchool){
-        return null
+        axios.post(this.apiUrl+"add", jobSeekerSchool)
     }
     
     deleteJobSeekerSchool(jobSeekerSchool){
-        return null
+        axios.post(this.apiUrl+"delete", jobSeekerSchool)
     }
 
     getAllJobSeekerSchools(){
-        return null
+        return axios.get(this.apiUrl+"getAll")
     }
 
     getAllJobSeekerSchoolsByUserId(id){
-        return null
+        return axios.get(this.apiUrl+"getByUserId"+"?id="+id)
     }
 }

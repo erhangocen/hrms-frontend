@@ -5,19 +5,19 @@ export default class StaffValidationService{
     apiUrl = "http://localhost:5050/api/staffValidation/";
 
     addStaffValidation(staffValidation){
-        return null
+        axios.post(this.apiUrl+"add", staffValidation)
     }
 
     deleteStaffValidation(staffValidation){
-        return null
+        axios.post(this.apiUrl+"delete", staffValidation)
     }
 
     validateStaffValidation(employerId,systemUserId){
-        return null
+        return axios.get(this.apiUrl+"validate"+"?employerId="+employerId+"&systemUserId="+ systemUserId)
     }
     
 
     getAllStaffValidations(){
-        return null
+        return axios.get(this.apiUrl+"getAll")
     }
 }

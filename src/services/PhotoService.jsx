@@ -5,14 +5,14 @@ export default class PhotoService {
     apiUrl = "http://localhost:5050/api/photo/";
 
     addPhoto(photo){
-        return null
+        axios.post(this.apiUrl+"add", photo)
     }
 
     deletePhoto(photo){
-        return null
+        axios.post(this.apiUrl+"delete", photo)
     }
 
     getPhotoByUserId(id){
-        return null
+        return axios.get(this.apiUrl+"getByUserId"+"?id="+id)
     }
 }

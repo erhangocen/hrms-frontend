@@ -5,19 +5,19 @@ export default class UserService {
     apiUrl = "http://localhost:5050/api/user/";
 
     validateUser(emailValidation){
-        return null
+        axios.post(this.apiUrl+"validate", emailValidation)
     }
 
     deleteUser(user){
-        return null
+        axios.post(this.apiUrl+"delete", user)
     }
 
 
     getAllUsers(){
-        return null
+        return axios.get(this.apiUrl+"getAll")
     }
 
     getUserById(id){
-        return null
+        return axios.get(this.apiUrl+"getById"+"?id="+id)
     }
 }

@@ -6,15 +6,15 @@ export default class EmployerService {
     apiUrl = "http://localhost:5050/api/employers/";
 
     addEmployer(employer){
-        return null;
+        axios.post(this.apiUrl+"add", employer)
     }
 
     deleteEmployer(employer){
-        return null;
+        axios.post(this.apiUrl+"delete", employer)
     }
 
     updateEmployer(employer){
-        return null;
+        axios.post(this.apiUrl+"update", employer)
     }
 
 
