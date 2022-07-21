@@ -12,12 +12,8 @@ export default class JobSeekerService{
         axios.post(this.apiUrl+"delete", jobSeeker)
     }
 
-    updateGithub(userId, link){
-        axios.post(this.apiUrl+"updateGithub?link="+link+"&userId="+userId)
-    }
-
-    updateLinkedin(userId, link){
-        axios.post(this.apiUrl+"updateLinkedin?link="+link+"&userId="+userId)
+    updateLinks(jobSeekerLinksDto){
+        axios.post(this.apiUrl+"updateLinks", jobSeekerLinksDto)
     }
 
     updateCoverLetter(userId, coverLetter){
