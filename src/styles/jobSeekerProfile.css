@@ -397,25 +397,26 @@ img{
 /*========== SKILLS AND LANGUAGES ==========*/
 
 .skills__content,
-.languages__content{
+.positions__content{
+  grid-template-columns: repeat(3, 1fr);
+  gap:0.5rem;
+}
+
+.positions__content{
   grid-template-columns: repeat(2, 1fr);
 }
 
-.languagess__content{
-  gap:0;
-}
-
-
-
+.languages__name,
 .skills__name,
-.language__name{
+.positions__name{
   display: flex;
   align-items: center;
   margin-bottom: var(--mb-3);
 }
 
 .skills__circle,
-.languages__circle{
+.languages__circle,
+.positions__circle{
   display: inline-block;
   width: 5px;
   height: 5px;
@@ -432,6 +433,14 @@ img{
 }
 
 /*========== REFERENCES ==========*/
+
+.references__container{
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--mb-3);
+  grid-template-columns: repeat(2, 2fr) !important;
+  gap: 6rem;
+}
 
 .references__content{
   gap: .25rem;
@@ -451,51 +460,22 @@ img{
 }
 
 
-/*========== INTERESTS ==========*/
+/*========== Positions ==========*/
 
-.interests__container{
-  grid-template-columns: repeat(3, 1fr);
+.languages__container{
   margin-top: var(--mb-2);
 }
 
-.interests__content{
-  display: flex;
+.languages__content{
+  display: inline-block;
   flex-direction: column;
-  align-items: center;
+
 }
 
-.interest__icon{
-  font-size: 1.5rem;
-  color: var(--text-color-light);
-  margin-bottom: .25rem;
+.star-rate{
+  margin-left: var(--mb-1);
 }
 
-/* Scroll top */
-
-.scrolltop{
-  position: fixed;
-  right: 1rem;
-  bottom: -20%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: .3rem;
-  background-color: var(--container-color-alt);
-  border-radius: .4rem;
-  z-index: var(--z-tooltip);
-  transition: .4s;
-  visibility: hidden;
-}
-
-.scrolltop__icon{
-  font-size: 1.2rem;
-  color: var(--text-color);
-}
-
-.show-scroll{
-  visibility: visible;
-  bottom: 4rem;
-}
 
 /*========== MEDIA QUERIES ==========*/
 /* For small devices, menu two columns */
@@ -562,8 +542,4 @@ img{
     column-gap: 3.5rem;
   }
 
-  .interests__container{
-    grid-template-columns: repeat(4, max-content);
-    column-gap: 3.5rem;
-  }
 }

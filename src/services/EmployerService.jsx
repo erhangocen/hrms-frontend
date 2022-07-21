@@ -3,7 +3,7 @@ import React from 'react'
 
 export default class EmployerService {
 
-    apiUrl = "http://localhost:5050/api/employers/";
+    apiUrl = "http://localhost:5050/api/employer/";
 
     addEmployer(employer){
         axios.post(this.apiUrl+"add", employer)
