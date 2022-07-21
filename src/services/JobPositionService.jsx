@@ -12,7 +12,6 @@ export default class JobPositionService {
         axios.post(this.apiUrl+"delete", jobPosition)
     }
 
-
     getAllJobPositions(){
         return axios.get(this.apiUrl+"getAll")
     }
