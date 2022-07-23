@@ -1,285 +1,369 @@
-import React, {useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import JobSeekerService from "../../services/JobSeekerService";
 import "../../styles/jobSeekerProfile.css";
 
 export default function JobSeekerProfile() {
+  const [jobSeeker, setJobSeker] = useState();
+  const [photo, setPhoto] = useState();
+  const [certificates, setCertificates] = useState([]);
+  const [references, setReferences] = useState([]);
+  const [skills, setSkills] = useState([]);
+  const [experiences, setExperiences] = useState([]);
+  const [positions, setPositions] = useState([]);
+  const [languages, setLanguages] = useState([]);
+  const [schools, setSchools] = useState([]);
 
-    const [jobSeeker, setJobSeker] = useState();
-    const [photo, setPhoto] = useState();
+  useEffect(() => {
+    let jobSeekerService = new JobSeekerService();
+    jobSeekerService.getCvByUserId(6).then((result) => {
+      setJobSeker(result.data.data.jobSeeker);
+      setPhoto(result.data.data.photo);
+      setCertificates(result.data.data.jobSeekerCertificates);
+      setReferences(result.data.data.jobSeekerReferences);
+      setSkills(result.data.data.jobSeekerSkills);
+      setExperiences(result.data.data.jobSeekerExperiences);
+      setPositions(result.data.data.jobSeekerPositions);
+      setLanguages(result.data.data.jobSeekerLanguages);
+      setSchools(result.data.data.jobSeekerSchools);
+    });
+  });
 
-    useEffect(()=>{
-        let jobSeekerService = new JobSeekerService();
-        jobSeekerService.getCvByUserId(6).then(result=>{
-           setJobSeker(result.data.data.jobSeeker)
-           setPhoto(result.data.data.photo) 
-        })
-    })
+  let localeYear = new Date().getFullYear();
 
-    return (
-        <div id="main-div">
-        <main className="l-main bd-container">
-            <div className="resume" id="area-cv">
+  const edits = Array.from(document.getElementsByClassName("editing"));
+
+  function editing() {
+    edits.forEach((edit) => {
+      edit.style.visibility = "visible";
+    });
+  }
+
+  function endEditing() {
+    edits.forEach((edit) => {
+      edit.style.visibility = "hidden";
+    });
+  }
+
+  return (
+    <div>
+      <div id="main-div">
+        <main
+          className="l-main bd-container"
+          onMouseOver={editing}
+          onMouseLeave={endEditing}
+        >
+          <div className="resume" id="area-cv">
             <div className="resume__left">
-                <section className="home" id="home">
+              <section className="home" id="home">
                 <div className="home__container section bd-grid">
-                    <div className="home__data bd-grid">
-                    <img
-                        src={photo?.photoUrl}
-                        alt=""
-                        className="home__img"
-                    />
+                  <div className="home__data bd-grid">
+                    <img src={photo?.photoUrl} alt="" className="home__img" />
                     <h1 className="home__title">
-                        <b>{jobSeeker?.firstName +" "+ jobSeeker?.lastName}</b>
+                      <b>
+                        {jobSeeker?.firstName} {jobSeeker?.lastName}
+                      </b>
                     </h1>
-                    <h3 className="home__profession">Web developer</h3>
-                    </div>
-                    <div className="home_address bd-grid">
+                    <h3 className="home__profession">
+                      {" "}
+                      Year : {localeYear - jobSeeker?.birthYear}
+                    </h3>
+                  </div>
+                  <div className="home_address bd-grid">
                     <span className="home__information">
-                        <i className="bx bx-map home__icon"></i> {jobSeeker?.city.cityName+ " - " +jobSeeker?.city.countryName}
+                      <i className="bx bx-map home__icon"></i>{" "}
+                      {jobSeeker?.city.cityName +
+                        " - " +
+                        jobSeeker?.city.countryName}
                     </span>
                     <span className="home__information">
-                        <i className="bx bx-envelope home__icon"></i>{" "}
-                        {jobSeeker?.email}
+                      <i className="bx bx-envelope home__icon"></i>{" "}
+                      {jobSeeker?.email}
                     </span>
                     <span className="home__information">
-                        <i className="bx bx-phone home__icon"></i> {jobSeeker?.phoneNumber}
+                      <i className="bx bx-phone home__icon"></i>{" "}
+                      {jobSeeker?.phoneNumber}
                     </span>
-                    </div>
+                  </div>
                 </div>
-                </section>
+                    <i className="bi bi-pencil-square main__edit__button editing"></i>           
+              </section>
 
-                <section className="profile section" id="profile">
-                <h2 className="section-title">Profile</h2>
-                <p className="profile__description">
-                    {jobSeeker?.coverLetter}
-                </p>
-                </section>
+              <section className="profile section" id="profile">
+                <div class="profile__header">
+                  <i class="bi bi-pencil-square edit__button editing"></i>
+                  <h2 class="section-title">Profile</h2>
+                </div>
+                <p className="profile__description">{jobSeeker?.coverLetter}</p>
+              </section>
 
-                <section className="social section" id="social">
-                <h2 className="section-title">SOCIAL</h2>
-
+              <section className="social section" id="social">
+                <div class="social__header">
+                  <i class="bi bi-pencil-square edit__button editing"></i>
+                  <h2 class="section-title">SOCIAL</h2>
+                </div>
                 <div className="social__container bd-grid">
-                    <a
-                    href={jobSeeker?.githubLink}
-                    className="social__link"
-                    >
+                  <a href={jobSeeker?.githubLink} className="social__link">
                     <i className="bx bxl-github"> </i> @github
-                    </a>
-                    <a
-                    href={jobSeeker?.linkedinLink}
-                    className="social__link"
-                    >
-                    <i className="bx bxl-linkedin-square social__icon"></i> @linkedin
-                    </a>
-                    <a
-                    href={jobSeeker?.instagramLink}
-                    className="social__link"
-                    >
+                  </a>
+                  <a href={jobSeeker?.linkedinLink} className="social__link">
+                    <i className="bx bxl-linkedin-square social__icon"></i>{" "}
+                    @linkedin
+                  </a>
+                  <a href={jobSeeker?.instagramLink} className="social__link">
                     <i className="bx bxl-instagram social__icon"></i> @instagram
-                    </a>
-                    <a
-                    href={jobSeeker?.twitterLink}
-                    className="social__link"
-                    >
+                  </a>
+                  <a href={jobSeeker?.twitterLink} className="social__link">
                     <i className="bx bxl-twitter social__icon"></i> @twitter
-                    </a>
+                  </a>
                 </div>
-                </section>
+              </section>
 
-                <section className="education section" id="educations">
-                <h2 className="section-title">Educations</h2>
-
+              <section className="education section" id="educations">
+                <div class="education__header">
+                  <i class="bi bi-plus-square-fill add__button editing"></i>
+                  <h2 class="section-title">Educations</h2>
+                </div>
                 <div className="education__container bd-grid">
-                    <div className="education__content">
-                    <div className="education__time">
+                  {schools?.map((school) => (
+                    <div className="education__content" key={school.id}>
+                      <div className="education__time">
                         <span className="education__rounder"></span>
-                        <span className="education__line"></span>
-                    </div>
-                    <div className="education__data bd-grid">
-                        <h3 className="education__title">Math</h3>
+                        {schools.indexOf(school, -1) === -1 ? (
+                          <span className="education__line"></span>
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                      <div className="education__data bd-grid col-9">
+                        <h3 className="education__title">
+                          {school.departmentName}
+                        </h3>
                         <span className="education__studies">
-                        Gebze Technical University
+                          {school.schoolName}
                         </span>
-                        <span className="education__year">2022 - 2026</span>
-                    </div>
-                    </div>
-
-                    <div className="education__content">
-                    <div className="education__time">
-                        <span className="education__rounder"></span>
-                        <span className="education__line"></span>
-                    </div>
-                    <div className="education__data bd-grid">
-                        <h3 className="education__title">Math - Science</h3>
-                        <span className="education__studies">
-                        Istanbul Ataturk High School
+                        <span className="education__year">
+                          {school.startYear} -{" "}
+                          {school.finishYear === 0 ? "..." : school.finishYear}
                         </span>
-                        <span className="education__year">2018 - 2022</span>
+                      </div>
+                      <div class="col-1">
+                        <i class="bx bx-x delete__button editing del"
+                            data-bs-target="#myModal"
+                            data-bs-toggle="modal"></i>
+                      </div>
                     </div>
-                    </div>
-
-                    <div className="education__content">
-                    <div className="education__time">
-                        <span className="education__rounder"></span>
-                        {/* <!-- <span className="education__line"></span> --> */}
-                    </div>
-                    <div className="education__data bd-grid">
-                        <h3 className="education__title">Primary Education</h3>
-                        <span className="education__studies">
-                        Sehit Ogretmenler Primary School
-                        </span>
-                        <span className="education__year">2010 - 2018</span>
-                    </div>
-                    </div>
+                  ))}
                 </div>
-                </section>
+              </section>
             </div>
 
             <div className="resume__right">
-                <section className="experience section" id="experiences">
+              <section className="experience section" id="experiences">
+                <i class="bi bi-plus-square-fill add__button editing right_add"></i>
                 <h2 className="section-title">Experiences</h2>
-
                 <div className="experience__conteiner bd-grid">
-                    <div className="experience__content">
-                    <div className="experience__time">
+                  {experiences?.map((experience) => (
+                    <div className="experience__content" key={experience.id}>
+                      <div className="experience__time">
                         <span className="experience__rounder"></span>
-                        {/* <!-- <span className="experience__line"></span> --> */}
-                    </div>
+                        {experiences.indexOf(experience, -1) === -1 ? (
+                          <span className="experience__line"></span>
+                        ) : (
+                          ""
+                        )}
+                      </div>
 
-                    <div className="experience__data bd-grid">
-                        <h3 className="experience__title">Web Developer</h3>
+                      <div className="experience__data bd-grid col-9">
+                        <h3 className="experience__title">
+                          {experience.jobPosition.positionName}
+                        </h3>
                         <span className="experience__company">
-                        From 2020 to 2022 | Freelence
+                          From <b>{experience.startDate.split("T")[0]}</b> to{" "}
+                          <b>
+                            {experience.finishDate?.split("T")[0] ?? " ... "}
+                          </b>{" "}
+                          | <b>{experience.workplaceName}</b>
                         </span>
                         <p className="experience__description">
-                        I web development for 3 year. I'm freelancing on this
-                        area.
+                          {experience.experienceExplanation}
                         </p>
+                      </div>
+                      <div class="col-1">
+                        <i class="bx bx-x delete__button editing del"
+                            data-bs-target="#myModal"
+                            data-bs-toggle="modal"></i>
+                      </div>
                     </div>
-                    </div>
+                  ))}
                 </div>
-                </section>
+              </section>
 
-                <section className="certificate section" id="certificates">
+              <section className="certificate section" id="certificates">
+                <i class="bi bi-plus-square-fill add__button editing right_add"></i>
                 <h2 className="section-title">Certificates</h2>
 
                 <div className="certificate__container bd-grid">
-                    <div className="certificate__content">
-                    <h3 className="certificate__title">
-                        BTK Academy Python Certificate Of Attendance (2022)
-                    </h3>
-                    </div>
-                    <div className="certificate__content">
-                    <h3 className="certificate__title">
-                        BTK Academy Javascript Certificate Of Attendance (2021)
-                    </h3>
-                    </div>
-                    <div className="certificate__content">
-                    <h3 className="certificate__title">
-                        BTK Academy CSS Certificate Of Attendance (2021)
-                    </h3>
-                    </div>
-                </div>
-                </section>
+                  {certificates?.map((certificate) => (
+                    <div className="certificate__content" key={certificate.id}>
+                      <div className="col-9">
+                        <h3 className="certificate__title">
+                          {certificate.certificateTitle} (
+                          {certificate.certificateYear})
+                        </h3>
+                      </div>
 
-                <section className="references section" id="references">
+                      <div className="col-1">
+                        <i class="bx bx-x editing del"
+                            data-bs-target="#myModal"
+                            data-bs-toggle="modal"></i>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section className="references section" id="references">
+                <i class="bi bi-plus-square-fill add__button editing right_add"></i>
                 <h2 className="section-title">References</h2>
 
                 <div className="references__container bd-grid">
-                    <div className="references__content bd-grid">
-                    <span className="references__subtitle">Software Developer</span>
-                    <h3 className="references__title">Engin Demiroğ</h3>
-                    <ul className="references__contect">
-                        <li>Email: engindemirog@gmail.com</li>
-                    </ul>
+                  {references?.map((reference) => (
+                    <div
+                      className="references__content bd-grid"
+                      key={reference.id}
+                    >
+                      <div className="col-9">
+                        <span className="references__subtitle">
+                          {reference.referenceTitle}
+                        </span>
+                        <h3 className="references__title">
+                          {reference.referenceName}
+                        </h3>
+                        <ul className="references__contect">
+                          <li>{reference.referenceMail}</li>
+                        </ul>
+                      </div>
+                      <div className="col-1">
+                        <i class="bx bx-x editing delete__button del"
+                            data-bs-target="#myModal"
+                            data-bs-toggle="modal"></i>
+                      </div>
                     </div>
-                    <div className="references__content bd-grid">
-                    <span className="references__subtitle">Software Developer</span>
-                    <h3 className="references__title">Engin Demiroğ</h3>
-                    <ul className="references__contect">
-                        <li>Email: engindemirog@gmail.com</li>
-                    </ul>
-                    </div>
+                  ))}
                 </div>
-                </section>
+              </section>
 
-                <section className="languages section" id="languages">
+              <section className="languages section" id="languages">
+                <i class="bi bi-plus-square-fill add__button editing language__add"></i>
                 <h2 className="section-title">Languages</h2>
                 <div className="languages__container">
-                    <ul className="languages__content bd-grid">
-                    <li className="languages__name">
-                        <span className="languages__circle"></span>
-                        Turkish
-                        <span className="star-rate">
-                        <span className="fa fa-star checked"></span>
-                        <span className="fa fa-star checked"></span>
-                        <span className="fa fa-star checked"></span>
-                        <span className="fa fa-star checked"></span>
-                        <span className="fa fa-star checked"></span>
-                        </span>
-                    </li>
-                    <li className="languages__name">
-                        <span className="languages__circle"></span>
-                        English
-                        <span className="star-rate">
-                        <span className="fa fa-star checked"></span>
-                        <span className="fa fa-star checked"></span>
-                        <span className="fa fa-star checked"></span>
-                        </span>
-                    </li>
-                    <li className="languages__name">
-                        <span className="languages__circle"></span>
-                        Germany
-                        <span className="star-rate">
-                        <span className="fa fa-star checked"></span>
-                        </span>
-                    </li>
-                    </ul>
+                  <ul className="languages__content bd-grid">
+                    {languages?.map((language) => (
+                      <li className="languages__name" key={language.id}>
+                        <span className="languages__circle"></span>{" "}
+                        {language.language.languageName}
+                        <div>
+                          <span className="star-rate">
+                            {[...Array(language.level)].map((e, i) => (
+                              <span
+                                className="fa fa-star checked"
+                                key={i}
+                              ></span>
+                            ))}
+                          </span>
+                        </div>
+                        <div class="col-1 rate__delete">
+                          <i class="bx bx-x editing del"
+                            data-bs-target="#myModal"
+                            data-bs-toggle="modal"></i>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                </section>
+              </section>
 
-                <section className="skills section" id="skills">
-                <h2 className="section-title">skills</h2>
+              <section className="skills section" id="skills">
+                <i class="bi bi-plus-square-fill add__button editing skills__add"></i>
+                <h2 className="section-title">Skills</h2>
                 <div className="skills__container">
-                    <ul className="skills__content bd-grid">
-                    <li className="skills__name">
-                        <span className="skills__circle"></span> Html
-                    </li>
-                    <li className="skills__name">
-                        <span className="skills__circle"></span> Css
-                    </li>
-                    <li className="skills__name">
-                        <span className="skills__circle"></span> Javascript
-                    </li>
-                    <li className="skills__name">
-                        <span className="skills__circle"></span> C#
-                    </li>
-                    <li className="skills__name">
-                        <span className="skills__circle"></span> Java
-                    </li>
-                    </ul>
+                  <ul className="skills__content bd-grid">
+                    {skills?.map((skill) => (
+                      <li className="skills__name" key={skill.id}>
+                        <div>
+                          <span className="skills__circle"></span>{" "}
+                          {skill.skill.skillName}
+                        </div>
+                        <div class="col-2">
+                          <i class="bx bx-x editing del"
+                          data-bs-target="#myModal"
+                          data-bs-toggle="modal"></i>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                </section>
+              </section>
 
-                <section className="positions section" id="positions">
+              <section className="positions section" id="positions">
+                <i class="bi bi-plus-square-fill add__button editing positions__add"></i>
                 <h2 className="section-title">Positions</h2>
                 <div className="positions__container">
-                    <ul className="positions__content bd-grid">
-                    <li className="positions__name">
-                        <span className="positions__circle"></span> Web developer
-                    </li>
-                    <li className="positions__name">
-                        <span className="positions__circle"></span> UI/UX designer
-                    </li>
-                    <li className="positions__name">
-                        <span className="positions__circle"></span> Nft designer
-                    </li>
-                    </ul>
+                  <ul className="positions__content bd-grid">
+                    {positions?.map((position) => (
+                      <li className="positions__name" key={position.id}>
+                        <div>
+                          <span className="positions__circle"></span>{" "}
+                          {position.jobPosition.positionName}
+                        </div>
+                        <div class="col-2">
+                          <i class="bx bx-x editing del"
+                            data-bs-target="#myModal"
+                            data-bs-toggle="modal"></i>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                </section>
+              </section>
             </div>
-            </div>
+          </div>
         </main>
+      </div>
+
+
+      {/* DELETE MODAL */}
+      <div id="myModal" class="modal fade" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-confirm">
+          <div class="modal-content">
+            <div class="modal-header flex-column">
+              <div class="icon-box">
+              <i class="bx bx-x"></i>
+              </div>
+              <h4 class="modal-title w-100">Are you sure?</h4>
+              <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Do you really want to delete these records? This process cannot
+                be undone.
+              </p>
+            </div>
+            <div class="modal-footer justify-content-center">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button type="button" class="btn btn-danger">
+                Delete
+              </button>
+            </div>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
