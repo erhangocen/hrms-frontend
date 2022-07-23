@@ -479,6 +479,7 @@ img{
 
 .star-rate{
   margin-left: var(--mb-1);
+  font-size: 5px;
 }
 
 .edit__coverLetter{
@@ -652,10 +653,20 @@ img{
 	border-bottom: none;   
 	position: relative;
 }
-.modal-confirm h4 {
+.modal-confirm #delete-title {
 	text-align: center;
 	font-size: 26px;
 	margin: 30px 0 -10px;
+}
+.modal-confirm .editContact-title {
+	text-align: center;
+	font-size: 26px;
+	margin-bottom: 30px;
+}
+.modal-confirm .contactForm {
+	text-align: center;
+	font-size: 26px;
+	margin-bottom: 30px;
 }
 .modal-confirm .close {
 	position: absolute;
@@ -690,10 +701,9 @@ img{
 	display: inline-block;
 	margin-top: 13px;
 }
-.modal-confirm .btn, .modal-confirm .btn:active {
+.modal-confirm .btn{
 	color: #fff;
 	border-radius: 4px;
-	background: #60c7c1;
 	text-decoration: none;
 	transition: all 0.4s;
 	line-height: normal;
