@@ -3,6 +3,8 @@ import Rating from "@mui/material/Rating";
 import TextField from "@mui/material/TextField";
 import JobSeekerService from "../../services/JobSeekerService";
 import CityService from "../../services/CityService";
+import SkillService from "../../services/SkillService";
+import LanguageService from "../../services/LanguageService";
 import JobPositionService from "../../services/JobPositionService";
 import "../../styles/jobSeekerProfile.css";
 
@@ -11,14 +13,18 @@ export default function JobSeekerProfile() {
   const [photo, setPhoto] = useState();
   const [certificates, setCertificates] = useState([]);
   const [references, setReferences] = useState([]);
-  const [skills, setSkills] = useState([]);
+  const [jobSeekerSkills, setJobSeekerSkills] = useState([]);
   const [experiences, setExperiences] = useState([]);
-  const [positions, setPositions] = useState([]);
-  const [languages, setLanguages] = useState([]);
+  const [jobSeekerPositions, setJobSeekerPositions] = useState([]);
+  const [jobSeekerLanguages, setJobSeekerLanguages] = useState([]);
   const [schools, setSchools] = useState([]);
 
   const [cities, setCities] = useState([]);
   const [jobPositions, setJobPositions] = useState([])
+  const [languages, setLanguages] = useState([])
+  const [skills, setSkills] = useState([])
+
+  const [value, setValue] = React.useState(0);
 
   useEffect(() => {
     let jobSeekerService = new JobSeekerService();
@@ -27,10 +33,10 @@ export default function JobSeekerProfile() {
       setPhoto(result.data.data.photo);
       setCertificates(result.data.data.jobSeekerCertificates);
       setReferences(result.data.data.jobSeekerReferences);
-      setSkills(result.data.data.jobSeekerSkills);
+      setJobSeekerSkills(result.data.data.jobSeekerSkills);
       setExperiences(result.data.data.jobSeekerExperiences);
-      setPositions(result.data.data.jobSeekerPositions);
-      setLanguages(result.data.data.jobSeekerLanguages);
+      setJobSeekerPositions(result.data.data.jobSeekerPositions);
+      setJobSeekerLanguages(result.data.data.jobSeekerLanguages);
       setSchools(result.data.data.jobSeekerSchools);
     });
   });
@@ -46,6 +52,20 @@ export default function JobSeekerProfile() {
     let jobPositionService = new JobPositionService();
     jobPositionService.getAllJobPositions().then((result) => {
       setJobPositions(result.data.data);
+    });
+  });
+
+  useState(() => {
+    let languageService = new LanguageService();
+    languageService.getAllLanguages().then((result) => {
+      setLanguages(result.data.data);
+    });
+  });
+
+  useState(() => {
+    let skillService = new SkillService();
+    skillService.getAllSkills().then((result) => {
+      setSkills(result.data.data);
     });
   });
 
@@ -314,11 +334,13 @@ export default function JobSeekerProfile() {
               </section>
 
               <section className="languages section" id="languages">
-                <i className="bi bi-plus-square-fill add__button editing language__add"></i>
+                <i className="bi bi-plus-square-fill add__button editing language__add"
+                    data-bs-toggle="modal"
+                    data-bs-target="#addLanguage"></i>
                 <h2 className="section-title">Languages</h2>
                 <div className="languages__container">
                   <ul className="languages__content bd-grid">
-                    {languages?.map((language) => (
+                    {jobSeekerLanguages?.map((language) => (
                       <li className="languages__name" key={language.id}>
                         <span className="languages__circle"></span>{" "}
                         {language.language.languageName}
@@ -349,7 +371,7 @@ export default function JobSeekerProfile() {
                 <h2 className="section-title">Skills</h2>
                 <div className="skills__container">
                   <ul className="skills__content bd-grid">
-                    {skills?.map((skill) => (
+                    {jobSeekerSkills?.map((skill) => (
                       <li className="skills__name" key={skill.id}>
                         <div>
                           <span className="skills__circle"></span>{" "}
@@ -375,7 +397,7 @@ export default function JobSeekerProfile() {
                 <h2 className="section-title">Positions</h2>
                 <div className="positions__container">
                   <ul className="positions__content bd-grid">
-                    {positions?.map((position) => (
+                    {jobSeekerPositions?.map((position) => (
                       <li className="positions__name" key={position.id}>
                         <div>
                           <span className="positions__circle"></span>{" "}
@@ -918,6 +940,74 @@ export default function JobSeekerProfile() {
         </div>
       </div>
 
+      {/* Add Language */}
+      <div
+        id="addLanguage"
+        className="modal fade"
+        tabIndex="-1"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-confirm">
+          <div className="modal-content">
+            <div className="modal-header flex-column">
+              <h4 className="editContact-title w-100">Add Language</h4>
+              <button
+                type="button"
+                className="btn-close close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+
+              {jobSeeker ? (
+                <div >
+                  <div className="row">
+                    <div className="col-7">
+                    <label className="float-left text-left">Position</label>
+                  <select
+                    className="form-select mb-4"
+                    aria-label="Default select example"
+                  >
+                    <option value={" "}> 
+                      Select Language
+                    </option>
+                    {languages?.map((language) => (
+                      <option value={language.id} key={language.id}>
+                        {language.languageName}
+                      </option>
+                    ))}
+                    
+                  </select>
+                    </div>
+                      <div className="col-5 mt-4">
+                        <Rating
+                          name="simple-controlled"
+                          value={value}
+                          onChange={(event, newValue) => {
+                            setValue(newValue);
+                          }}
+                        />
+                      </div>
+                  </div>
+                  
+                </div>
+              ) : null}
+
+              <div className="modal-footer justify-content-center">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button type="button" className="btn btn-primary">
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Add Position */}
       <div
