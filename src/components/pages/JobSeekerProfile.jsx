@@ -65,6 +65,13 @@ export default function JobSeekerProfile() {
     });
   }
 
+
+  let currentYear = new Date().getFullYear();
+  let years = [];
+  for(currentYear = 2022; currentYear>1950; currentYear--){
+    years.push(currentYear)
+  } 
+
   return (
     <div>
       <div id="main-div">
@@ -156,7 +163,7 @@ export default function JobSeekerProfile() {
                   <i
                     className="bi bi-plus-square-fill add__button editing"
                     data-bs-toggle="modal"
-                    data-bs-target="#editSchools"
+                    data-bs-target="#addSchool"
                   ></i>
                   <h2 className="section-title">Educations</h2>
                 </div>
@@ -201,7 +208,7 @@ export default function JobSeekerProfile() {
                 <i
                   className="bi bi-plus-square-fill add__button editing right_add"
                   data-bs-toggle="modal"
-                  data-bs-target="#editExperiences"
+                  data-bs-target="#addExperience"
                 ></i>
                 <h2 className="section-title">Experiences</h2>
                 <div className="experience__conteiner bd-grid">
@@ -244,7 +251,9 @@ export default function JobSeekerProfile() {
               </section>
 
               <section className="certificate section" id="certificates">
-                <i className="bi bi-plus-square-fill add__button editing right_add"></i>
+                <i className="bi bi-plus-square-fill add__button editing right_add"
+                    data-bs-toggle="modal"
+                    data-bs-target="#addCertificate"></i>
                 <h2 className="section-title">Certificates</h2>
 
                 <div className="certificate__container bd-grid">
@@ -270,7 +279,9 @@ export default function JobSeekerProfile() {
               </section>
 
               <section className="references section" id="references">
-                <i className="bi bi-plus-square-fill add__button editing right_add"></i>
+                <i className="bi bi-plus-square-fill add__button editing right_add"
+                    data-bs-toggle="modal"
+                    data-bs-target="#addReference"></i>
                 <h2 className="section-title">References</h2>
 
                 <div className="references__container bd-grid">
@@ -358,7 +369,9 @@ export default function JobSeekerProfile() {
               </section>
 
               <section className="positions section" id="positions">
-                <i className="bi bi-plus-square-fill add__button editing positions__add"></i>
+                <i className="bi bi-plus-square-fill add__button editing positions__add"
+                    data-bs-toggle="modal"
+                    data-bs-target="#addPosition"></i>
                 <h2 className="section-title">Positions</h2>
                 <div className="positions__container">
                   <ul className="positions__content bd-grid">
@@ -618,9 +631,9 @@ export default function JobSeekerProfile() {
         </div>
       </div>
 
-      {/* Add School Icons */}
+      {/* Add School */}
       <div
-        id="editSchools"
+        id="addSchool"
         className="modal fade"
         tabIndex="-1"
         aria-hidden="true"
@@ -653,25 +666,28 @@ export default function JobSeekerProfile() {
 
                   <div className="row">
                     <div className="col-6 ">
-                      <label className="float-top text-left">Start Date</label>
-                      <input
-                        id="outlined-required"
-                        className="dateForm form-control float-bottom w-100 "
-                        type="month"
-                        label="Start Year"
-                        variant="outlined"
-                      />
+                      <label className="float-top text-left">Start Year</label>
+                      <select
+                    className="form-select mb-4"
+                    aria-label="Default select example">
+                      <option value={""}> ---Start Year---</option>
+                      {years.map(year=>(
+                        <option value={year}>{year}</option>
+                      ))}
+                  </select>
                     </div>
 
                     <div className="col-6 ">
-                      <label className="float-top text-left">Finish Date</label>
-                      <input
-                        id="outlined-required"
-                        className="dateForm form-control float-bottom w-100 "
-                        type="month"
-                        label="Start Year"
-                        variant="outlined"
-                      />
+                    <label className="float-top text-left">Finish Year</label>
+                    <select
+                    className="form-select mb-4"
+                    aria-label="Default select example">
+                      <option value={""}> ---Finish Year---</option>
+                      <option value={""}> Continues</option>
+                      {years.map(year=>(
+                        <option value={year}>{year}</option>
+                      ))}
+                  </select>
                     </div>
                   </div>
                 </div>
@@ -696,7 +712,7 @@ export default function JobSeekerProfile() {
 
       {/* Add Experiene Icons */}
       <div
-        id="editExperiences"
+        id="addExperience"
         className="modal fade"
         tabIndex="-1"
         aria-hidden="true"
@@ -726,16 +742,20 @@ export default function JobSeekerProfile() {
                     label="Explanation"
                     variant="outlined"
                   />
-
+                  <label className="float-top text-left">Position</label>
                   <select
                     className="form-select mb-4"
                     aria-label="Default select example"
                   >
+                    <option value={" "}> 
+                      ---Select Job Position---
+                    </option>
                     {jobPositions?.map((jobPosition) => (
                       <option value={jobPosition.id} key={jobPosition.id}>
                         {jobPosition.positionName}
                       </option>
                     ))}
+                    
                   </select>
 
                   <div className="row">
@@ -761,6 +781,63 @@ export default function JobSeekerProfile() {
                       />
                     </div>
                   </div>
+                </div>
+              ) : null}
+
+              <div className="modal-footer justify-content-center">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button type="button" className="btn btn-primary">
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      {/* Add Certificate Icons */}
+      <div
+        id="addCertificate"
+        className="modal fade"
+        tabIndex="-1"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-confirm">
+          <div className="modal-content">
+            <div className="modal-header flex-column">
+              <h4 className="editContact-title w-100">Add Certificate</h4>
+              <button
+                type="button"
+                className="btn-close close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+
+              {jobSeeker ? (
+                <div className="w-100">
+                  <TextField
+                    id="outlined-required"
+                    className="contactForm w-100"
+                    label="Title"
+                    variant="outlined"
+                  />
+                  <label className="float-top text-left">Year Of Taken</label>
+                  <select
+                    className="form-select mb-4"
+                    aria-label="Default select example">
+                      <option value={""}> ---Year Of Taken---</option>
+                      {years.map(year=>(
+                        <option value={year}>{year}</option>
+                      ))}
+                  </select>
+                   
                 </div>
               ) : null}
 
@@ -784,7 +861,7 @@ export default function JobSeekerProfile() {
 
       {/* Add Reference Icons */}
       <div
-        id="editExperiences"
+        id="addReference"
         className="modal fade"
         tabIndex="-1"
         aria-hidden="true"
@@ -792,7 +869,7 @@ export default function JobSeekerProfile() {
         <div className="modal-dialog modal-confirm">
           <div className="modal-content">
             <div className="modal-header flex-column">
-              <h4 className="editContact-title w-100">Add Experience</h4>
+              <h4 className="editContact-title w-100">Add Reference</h4>
               <button
                 type="button"
                 className="btn-close close"
@@ -805,50 +882,22 @@ export default function JobSeekerProfile() {
                   <TextField
                     id="outlined-required"
                     className="contactForm w-100"
-                    label="Workplace Name"
+                    label="Title"
                     variant="outlined"
                   />
                   <TextField
                     id="outlined-required"
                     className="contactForm w-100"
-                    label="Explanation"
+                    label="Name - Surname"
+                    variant="outlined"
+                  />
+                  <TextField
+                    id="outlined-required"
+                    className="contactForm w-100"
+                    label="Mail"
                     variant="outlined"
                   />
 
-                  <select
-                    className="form-select mb-4"
-                    aria-label="Default select example"
-                  >
-                    {jobPositions?.map((jobPosition) => (
-                      <option value={jobPosition.id} key={jobPosition.id}>
-                        {jobPosition.positionName}
-                      </option>
-                    ))}
-                  </select>
-
-                  <div className="row">
-                    <div className="col-6 ">
-                      <label className="float-top text-left">Start Date</label>
-                      <input
-                        id="outlined-required"
-                        className="dateForm form-control float-bottom w-100 "
-                        type="month"
-                        label="Start Year"
-                        variant="outlined"
-                      />
-                    </div>
-
-                    <div className="col-6 ">
-                      <label className="float-top text-left">Finish Date</label>
-                      <input
-                        id="outlined-required"
-                        className="dateForm form-control float-bottom w-100 "
-                        type="month"
-                        label="Start Year"
-                        variant="outlined"
-                      />
-                    </div>
-                  </div>
                 </div>
               ) : null}
 
@@ -869,6 +918,61 @@ export default function JobSeekerProfile() {
         </div>
       </div>
 
+
+      {/* Add Position */}
+      <div
+        id="addPosition"
+        className="modal fade"
+        tabIndex="-1"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-confirm">
+          <div className="modal-content">
+            <div className="modal-header flex-column">
+              <h4 className="editContact-title w-100">Add Position</h4>
+              <button
+                type="button"
+                className="btn-close close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+
+              {jobSeeker ? (
+                <div>
+                  <label className="float-top text-left">Position</label>
+                  <select
+                    className="form-select mb-4"
+                    aria-label="Default select example"
+                  >
+                    <option value={" "}> 
+                      ---Select Job Position---
+                    </option>
+                    {jobPositions?.map((jobPosition) => (
+                      <option value={jobPosition.id} key={jobPosition.id}>
+                        {jobPosition.positionName}
+                      </option>
+                    ))}
+                    
+                  </select>
+                </div>
+              ) : null}
+
+              <div className="modal-footer justify-content-center">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button type="button" className="btn btn-primary">
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
   );
