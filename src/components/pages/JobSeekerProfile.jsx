@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Rating from "@mui/material/Rating";
-import TextField from '@mui/material/TextField';
+import TextField from "@mui/material/TextField";
 import JobSeekerService from "../../services/JobSeekerService";
+import CityService from "../../services/CityService";
 import "../../styles/jobSeekerProfile.css";
 
 export default function JobSeekerProfile() {
@@ -15,6 +16,8 @@ export default function JobSeekerProfile() {
   const [languages, setLanguages] = useState([]);
   const [schools, setSchools] = useState([]);
 
+  const [cities, setCities] = useState([]);
+
   useEffect(() => {
     let jobSeekerService = new JobSeekerService();
     jobSeekerService.getCvByUserId(6).then((result) => {
@@ -27,6 +30,13 @@ export default function JobSeekerProfile() {
       setPositions(result.data.data.jobSeekerPositions);
       setLanguages(result.data.data.jobSeekerLanguages);
       setSchools(result.data.data.jobSeekerSchools);
+    });
+  });
+
+  useState(() => {
+    let cityService = new CityService();
+    cityService.getAllCities().then((result) => {
+      setCities(result.data.data);
     });
   });
 
@@ -47,7 +57,9 @@ export default function JobSeekerProfile() {
   }
 
   return (
-    <div>
+    <div> 
+
+
       <div id="main-div">
         <main
           className="l-main bd-container"
@@ -87,22 +99,29 @@ export default function JobSeekerProfile() {
                     </span>
                   </div>
                 </div>
-                    <i className="bi bi-pencil-square main__edit__button editing" 
-                      data-bs-toggle="modal" data-bs-target="#editContact"></i>           
+                <i
+                  className="bi bi-pencil-square main__edit__button editing"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editContact"
+                ></i>
               </section>
 
               <section className="profile section" id="profile">
-                <div class="profile__header">
-                  <i class="bi bi-pencil-square edit__button editing"></i>
-                  <h2 class="section-title">Profile</h2>
+                <div className="profile__header">
+                  <i className="bi bi-pencil-square edit__button editing"
+                      data-bs-toggle="modal"
+                      data-bs-target="#editCoverLetter"></i>
+                  <h2 className="section-title">Profile</h2>
                 </div>
                 <p className="profile__description">{jobSeeker?.coverLetter}</p>
               </section>
 
               <section className="social section" id="social">
-                <div class="social__header">
-                  <i class="bi bi-pencil-square edit__button editing"></i>
-                  <h2 class="section-title">SOCIAL</h2>
+                <div className="social__header">
+                  <i className="bi bi-pencil-square edit__button editing"
+                      data-bs-toggle="modal"
+                      data-bs-target="#editSocials"></i>
+                  <h2 className="section-title">SOCIAL</h2>
                 </div>
                 <div className="social__container bd-grid">
                   <a href={jobSeeker?.githubLink} className="social__link">
@@ -122,9 +141,9 @@ export default function JobSeekerProfile() {
               </section>
 
               <section className="education section" id="educations">
-                <div class="education__header">
-                  <i class="bi bi-plus-square-fill add__button editing"></i>
-                  <h2 class="section-title">Educations</h2>
+                <div className="education__header">
+                  <i className="bi bi-plus-square-fill add__button editing"></i>
+                  <h2 className="section-title">Educations</h2>
                 </div>
                 <div className="education__container bd-grid">
                   {schools?.map((school) => (
@@ -149,10 +168,12 @@ export default function JobSeekerProfile() {
                           {school.finishYear === 0 ? "..." : school.finishYear}
                         </span>
                       </div>
-                      <div class="col-1">
-                        <i class="bx bx-x delete__button editing del"
-                            data-bs-target="#deleteModal"
-                            data-bs-toggle="modal"></i>
+                      <div className="col-1">
+                        <i
+                          className="bx bx-x delete__button editing del"
+                          data-bs-target="#deleteModal"
+                          data-bs-toggle="modal"
+                        ></i>
                       </div>
                     </div>
                   ))}
@@ -162,7 +183,7 @@ export default function JobSeekerProfile() {
 
             <div className="resume__right">
               <section className="experience section" id="experiences">
-                <i class="bi bi-plus-square-fill add__button editing right_add"></i>
+                <i className="bi bi-plus-square-fill add__button editing right_add"></i>
                 <h2 className="section-title">Experiences</h2>
                 <div className="experience__conteiner bd-grid">
                   {experiences?.map((experience) => (
@@ -191,10 +212,12 @@ export default function JobSeekerProfile() {
                           {experience.experienceExplanation}
                         </p>
                       </div>
-                      <div class="col-1">
-                        <i class="bx bx-x delete__button editing del"
-                            data-bs-target="#deleteModal"
-                            data-bs-toggle="modal"></i>
+                      <div className="col-1">
+                        <i
+                          className="bx bx-x delete__button editing del"
+                          data-bs-target="#deleteModal"
+                          data-bs-toggle="modal"
+                        ></i>
                       </div>
                     </div>
                   ))}
@@ -202,7 +225,7 @@ export default function JobSeekerProfile() {
               </section>
 
               <section className="certificate section" id="certificates">
-                <i class="bi bi-plus-square-fill add__button editing right_add"></i>
+                <i className="bi bi-plus-square-fill add__button editing right_add"></i>
                 <h2 className="section-title">Certificates</h2>
 
                 <div className="certificate__container bd-grid">
@@ -216,9 +239,11 @@ export default function JobSeekerProfile() {
                       </div>
 
                       <div className="col-1">
-                        <i class="bx bx-x editing del"
-                            data-bs-target="#deleteModal"
-                            data-bs-toggle="modal"></i>
+                        <i
+                          className="bx bx-x editing del"
+                          data-bs-target="#deleteModal"
+                          data-bs-toggle="modal"
+                        ></i>
                       </div>
                     </div>
                   ))}
@@ -226,7 +251,7 @@ export default function JobSeekerProfile() {
               </section>
 
               <section className="references section" id="references">
-                <i class="bi bi-plus-square-fill add__button editing right_add"></i>
+                <i className="bi bi-plus-square-fill add__button editing right_add"></i>
                 <h2 className="section-title">References</h2>
 
                 <div className="references__container bd-grid">
@@ -247,9 +272,11 @@ export default function JobSeekerProfile() {
                         </ul>
                       </div>
                       <div className="col-1">
-                        <i class="bx bx-x editing delete__button del"
-                            data-bs-target="#deleteModal"
-                            data-bs-toggle="modal"></i>
+                        <i
+                          className="bx bx-x editing delete__button del"
+                          data-bs-target="#deleteModal"
+                          data-bs-toggle="modal"
+                        ></i>
                       </div>
                     </div>
                   ))}
@@ -257,7 +284,7 @@ export default function JobSeekerProfile() {
               </section>
 
               <section className="languages section" id="languages">
-                <i class="bi bi-plus-square-fill add__button editing language__add"></i>
+                <i className="bi bi-plus-square-fill add__button editing language__add"></i>
                 <h2 className="section-title">Languages</h2>
                 <div className="languages__container">
                   <ul className="languages__content bd-grid">
@@ -267,13 +294,19 @@ export default function JobSeekerProfile() {
                         {language.language.languageName}
                         <div>
                           <span className="star-rate">
-                            <Rating name="simple-controlled" value={language.level} readOnly />
+                            <Rating
+                              name="simple-controlled"
+                              value={language.level}
+                              readOnly
+                            />
                           </span>
                         </div>
-                        <div class="col-1 rate__delete">
-                          <i class="bx bx-x editing del"
+                        <div className="col-1 rate__delete">
+                          <i
+                            className="bx bx-x editing del"
                             data-bs-target="#deleteModal"
-                            data-bs-toggle="modal"></i>
+                            data-bs-toggle="modal"
+                          ></i>
                         </div>
                       </li>
                     ))}
@@ -282,7 +315,7 @@ export default function JobSeekerProfile() {
               </section>
 
               <section className="skills section" id="skills">
-                <i class="bi bi-plus-square-fill add__button editing skills__add"></i>
+                <i className="bi bi-plus-square-fill add__button editing skills__add"></i>
                 <h2 className="section-title">Skills</h2>
                 <div className="skills__container">
                   <ul className="skills__content bd-grid">
@@ -292,10 +325,12 @@ export default function JobSeekerProfile() {
                           <span className="skills__circle"></span>{" "}
                           {skill.skill.skillName}
                         </div>
-                        <div class="col-2">
-                          <i class="bx bx-x editing del"
-                          data-bs-target="#deleteModal"
-                          data-bs-toggle="modal"></i>
+                        <div className="col-2">
+                          <i
+                            className="bx bx-x editing del"
+                            data-bs-target="#deleteModal"
+                            data-bs-toggle="modal"
+                          ></i>
                         </div>
                       </li>
                     ))}
@@ -304,7 +339,7 @@ export default function JobSeekerProfile() {
               </section>
 
               <section className="positions section" id="positions">
-                <i class="bi bi-plus-square-fill add__button editing positions__add"></i>
+                <i className="bi bi-plus-square-fill add__button editing positions__add"></i>
                 <h2 className="section-title">Positions</h2>
                 <div className="positions__container">
                   <ul className="positions__content bd-grid">
@@ -314,10 +349,12 @@ export default function JobSeekerProfile() {
                           <span className="positions__circle"></span>{" "}
                           {position.jobPosition.positionName}
                         </div>
-                        <div class="col-2">
-                          <i class="bx bx-x editing del"
+                        <div className="col-2">
+                          <i
+                            className="bx bx-x editing del"
                             data-bs-target="#deleteModal"
-                            data-bs-toggle="modal"></i>
+                            data-bs-toggle="modal"
+                          ></i>
                         </div>
                       </li>
                     ))}
@@ -329,33 +366,39 @@ export default function JobSeekerProfile() {
         </main>
       </div>
 
-
       {/* DELETE MODAL */}
-      <div id="deleteModal" class="modal fade" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-confirm">
-          <div class="modal-content">
-            <div class="modal-header flex-column">
-              <div class="icon-box">
-              <i class="bx bx-x"></i>
+      <div id="deleteModal" className="modal fade" tabIndex="-1" aria-hidden="true">
+        <div className="modal-dialog modal-confirm">
+          <div className="modal-content">
+            <div className="modal-header flex-column">
+              <div className="icon-box">
+                <i className="bx bx-x"></i>
               </div>
-              <h4 class="modal-title w-100" id="delete-title">Are you sure?</h4>
-              <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h4 className="modal-title w-100" id="delete-title">
+                Are you sure?
+              </h4>
+              <button
+                type="button"
+                className="btn-close close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <p>
                 Do you really want to delete these records? This process cannot
                 be undone.
               </p>
             </div>
-            <div class="modal-footer justify-content-center">
+            <div className="modal-footer justify-content-center">
               <button
                 type="button"
-                class="btn btn-secondary"
+                className="btn btn-secondary"
                 data-bs-dismiss="modal"
               >
                 Cancel
               </button>
-              <button type="button" class="btn btn-danger">
+              <button type="button" className="btn btn-danger">
                 Delete
               </button>
             </div>
@@ -363,42 +406,70 @@ export default function JobSeekerProfile() {
         </div>
       </div>
 
-      {/* <div class="modal fade" id="editContact" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            <TextField id="standard-basic" label="Standard" variant="standard" />
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div> */}
+      {/* EDİT CONTACT MODAL  */}
+      <div id="editContact" className="modal fade" tabIndex="-1" aria-hidden="true">
+        <div className="modal-dialog modal-confirm">
+          <div className="modal-content">
+            <div className="modal-header flex-column">
+              <h4 className="editContact-title w-100">Edit Contact</h4>
+              <button
+                type="button"
+                className="btn-close close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+              <select
+                className="form-select mb-4"
+                aria-label="Default select example"
+              >
+                {cities?.map((city) => (
+                  <option value={city.id} key={city.id}>
+                    {city.cityName + " - " + city.countryName}
+                  </option>
+                ))}
+              </select>
+              {jobSeeker ? (
+                <div>
+                  <TextField
+                    id="outlined-required"
+                    className="contactForm w-100"
+                    label="E-Mail"
+                    defaultValue={jobSeeker.email}
+                    variant="outlined"
+                  />
+                  <TextField
+                    id="outlined-required"
+                    className="contactForm w-100"
+                    label="Phone Number"
+                    defaultValue={jobSeeker?.phoneNumber}
+                    variant="outlined"
+                  />
+                  <TextField
+                    id="outlined-required"
+                    className="contactForm w-100"
+                    label="E-Mail"
+                    defaultValue={jobSeeker.email}
+                    variant="outlined"
+                  />
+                  <TextField
+                    id="outlined-required"
+                    className="contactForm w-100"
+                    label="Phone Number"
+                    defaultValue={jobSeeker?.phoneNumber}
+                    variant="outlined"
+                  />
+                </div>
+              ):null}
 
-
-      <div id="editContact" class="modal fade" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-confirm">
-          <div class="modal-content">
-            <div class="modal-header flex-column">
-            <h4 class="editContact-title w-100">Editing Contact</h4>
-              <TextField id="standard-basic" className="contactForm w-100" label="City" variant="outlined" />
-              <TextField id="standard-basic" className="contactForm w-100" label="E-Mail" variant="outlined" />
-              <TextField id="standard-basic" className="contactForm w-100" label="Phone Number" variant="outlined" />
-              <div class="modal-footer justify-content-center">
+              <div className="modal-footer justify-content-center">
                 <button
                   type="button"
-                  class="btn btn-secondary"
+                  className="btn btn-secondary"
                   data-bs-dismiss="modal"
                 >
                   Cancel
                 </button>
-                <button type="button" class="btn btn-primary">
+                <button type="button" className="btn btn-primary">
                   Save
                 </button>
               </div>
@@ -406,6 +477,106 @@ export default function JobSeekerProfile() {
           </div>
         </div>
       </div>
+
+      {/* EDİT Cover Letter MODAL  */}
+      <div id="editCoverLetter" className="modal fade" tabIndex="-1" aria-hidden="true">
+        <div className="modal-dialog modal-confirm">
+          <div className="modal-content">
+            <div className="modal-header flex-column">
+              <h4 className="editContact-title w-100">Edit Cover Letter</h4>
+              <button
+                type="button"
+                className="btn-close close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+              {jobSeeker ? (
+                  <textarea 
+                    className="form-control w-100 coverLetter" 
+                    id="exampleFormControlTextarea1" 
+                    defaultValue={jobSeeker.coverLetter}
+                    rows="10"></textarea>
+              ):null}
+
+              <div className="modal-footer justify-content-center">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button type="button" className="btn btn-primary">
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Edit Social Icons */}
+      <div id="editSocials" className="modal fade" tabIndex="-1" aria-hidden="true">
+        <div className="modal-dialog modal-confirm">
+          <div className="modal-content">
+            <div className="modal-header flex-column">
+              <h4 className="editContact-title w-100">Edit Contact</h4>
+              <button
+                type="button"
+                className="btn-close close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+
+              {jobSeeker ? (
+                <div>
+                  <TextField
+                    id="outlined-required"
+                    className="contactForm w-100"
+                    label="Github"
+                    defaultValue={jobSeeker.githubLink}
+                    variant="outlined"
+                  />
+                  <TextField
+                    id="outlined-required"
+                    className="contactForm w-100"
+                    label="Linkedin"
+                    defaultValue={jobSeeker.linkedinLink}
+                    variant="outlined"
+                  />
+                  <TextField
+                    id="outlined-required"
+                    className="contactForm w-100"
+                    label="Instagram"
+                    defaultValue={jobSeeker.instagramLink}
+                    variant="outlined"
+                  />
+                  <TextField
+                    id="outlined-required"
+                    className="contactForm w-100"
+                    label="Twitter"
+                    defaultValue={jobSeeker.twitterLink}
+                    variant="outlined"
+                  />
+                </div>
+              ):null}
+
+              <div className="modal-footer justify-content-center">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button type="button" className="btn btn-primary">
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>         
 
 
     </div>
