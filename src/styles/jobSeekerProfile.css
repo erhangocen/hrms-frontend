@@ -636,11 +636,13 @@ img{
 
 
 
-
+.modal{
+  background-color: #0b0a0aa2;
+}
 
 .modal-confirm {		
 	color: #636363;
-	width: 400px;
+	width: 420px;
 }
 .modal-confirm .modal-content {
 	padding: 20px;
@@ -728,4 +730,9 @@ img{
 .trigger-btn {
 	display: inline-block;
 	margin: 100px auto;
+}
+
+.coverLetter{
+  width: 100% !important;
+  height: max-content;
 }
