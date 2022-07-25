@@ -670,6 +670,13 @@ img{
 	font-size: 26px;
 	margin-bottom: 30px;
 }
+.modal-confirm .form-control {
+  margin-bottom: 20px;
+}
+.modal-confirm .text-left{
+  float: left;
+  padding-left: 10px;
+}
 .modal-confirm .close {
 	position: absolute;
 	top: 0px;

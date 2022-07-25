@@ -3,6 +3,7 @@ import Rating from "@mui/material/Rating";
 import TextField from "@mui/material/TextField";
 import JobSeekerService from "../../services/JobSeekerService";
 import CityService from "../../services/CityService";
+import JobPositionService from "../../services/JobPositionService";
 import "../../styles/jobSeekerProfile.css";
 
 export default function JobSeekerProfile() {
@@ -17,6 +18,7 @@ export default function JobSeekerProfile() {
   const [schools, setSchools] = useState([]);
 
   const [cities, setCities] = useState([]);
+  const [jobPositions, setJobPositions] = useState([])
 
   useEffect(() => {
     let jobSeekerService = new JobSeekerService();
@@ -40,6 +42,13 @@ export default function JobSeekerProfile() {
     });
   });
 
+  useState(() => {
+    let jobPositionService = new JobPositionService();
+    jobPositionService.getAllJobPositions().then((result) => {
+      setJobPositions(result.data.data);
+    });
+  });
+
   let localeYear = new Date().getFullYear();
 
   const edits = Array.from(document.getElementsByClassName("editing"));
@@ -57,9 +66,7 @@ export default function JobSeekerProfile() {
   }
 
   return (
-    <div> 
-
-
+    <div>
       <div id="main-div">
         <main
           className="l-main bd-container"
@@ -108,9 +115,11 @@ export default function JobSeekerProfile() {
 
               <section className="profile section" id="profile">
                 <div className="profile__header">
-                  <i className="bi bi-pencil-square edit__button editing"
-                      data-bs-toggle="modal"
-                      data-bs-target="#editCoverLetter"></i>
+                  <i
+                    className="bi bi-pencil-square edit__button editing"
+                    data-bs-toggle="modal"
+                    data-bs-target="#editCoverLetter"
+                  ></i>
                   <h2 className="section-title">Profile</h2>
                 </div>
                 <p className="profile__description">{jobSeeker?.coverLetter}</p>
@@ -118,9 +127,11 @@ export default function JobSeekerProfile() {
 
               <section className="social section" id="social">
                 <div className="social__header">
-                  <i className="bi bi-pencil-square edit__button editing"
-                      data-bs-toggle="modal"
-                      data-bs-target="#editSocials"></i>
+                  <i
+                    className="bi bi-pencil-square edit__button editing"
+                    data-bs-toggle="modal"
+                    data-bs-target="#editSocials"
+                  ></i>
                   <h2 className="section-title">SOCIAL</h2>
                 </div>
                 <div className="social__container bd-grid">
@@ -142,7 +153,11 @@ export default function JobSeekerProfile() {
 
               <section className="education section" id="educations">
                 <div className="education__header">
-                  <i className="bi bi-plus-square-fill add__button editing"></i>
+                  <i
+                    className="bi bi-plus-square-fill add__button editing"
+                    data-bs-toggle="modal"
+                    data-bs-target="#editSchools"
+                  ></i>
                   <h2 className="section-title">Educations</h2>
                 </div>
                 <div className="education__container bd-grid">
@@ -183,7 +198,11 @@ export default function JobSeekerProfile() {
 
             <div className="resume__right">
               <section className="experience section" id="experiences">
-                <i className="bi bi-plus-square-fill add__button editing right_add"></i>
+                <i
+                  className="bi bi-plus-square-fill add__button editing right_add"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editExperiences"
+                ></i>
                 <h2 className="section-title">Experiences</h2>
                 <div className="experience__conteiner bd-grid">
                   {experiences?.map((experience) => (
@@ -367,7 +386,12 @@ export default function JobSeekerProfile() {
       </div>
 
       {/* DELETE MODAL */}
-      <div id="deleteModal" className="modal fade" tabIndex="-1" aria-hidden="true">
+      <div
+        id="deleteModal"
+        className="modal fade"
+        tabIndex="-1"
+        aria-hidden="true"
+      >
         <div className="modal-dialog modal-confirm">
           <div className="modal-content">
             <div className="modal-header flex-column">
@@ -407,7 +431,12 @@ export default function JobSeekerProfile() {
       </div>
 
       {/* EDİT CONTACT MODAL  */}
-      <div id="editContact" className="modal fade" tabIndex="-1" aria-hidden="true">
+      <div
+        id="editContact"
+        className="modal fade"
+        tabIndex="-1"
+        aria-hidden="true"
+      >
         <div className="modal-dialog modal-confirm">
           <div className="modal-content">
             <div className="modal-header flex-column">
@@ -459,7 +488,7 @@ export default function JobSeekerProfile() {
                     variant="outlined"
                   />
                 </div>
-              ):null}
+              ) : null}
 
               <div className="modal-footer justify-content-center">
                 <button
@@ -479,7 +508,12 @@ export default function JobSeekerProfile() {
       </div>
 
       {/* EDİT Cover Letter MODAL  */}
-      <div id="editCoverLetter" className="modal fade" tabIndex="-1" aria-hidden="true">
+      <div
+        id="editCoverLetter"
+        className="modal fade"
+        tabIndex="-1"
+        aria-hidden="true"
+      >
         <div className="modal-dialog modal-confirm">
           <div className="modal-content">
             <div className="modal-header flex-column">
@@ -491,12 +525,13 @@ export default function JobSeekerProfile() {
                 aria-label="Close"
               ></button>
               {jobSeeker ? (
-                  <textarea 
-                    className="form-control w-100 coverLetter" 
-                    id="exampleFormControlTextarea1" 
-                    defaultValue={jobSeeker.coverLetter}
-                    rows="10"></textarea>
-              ):null}
+                <textarea
+                  className="form-control w-100 coverLetter"
+                  id="exampleFormControlTextarea1"
+                  defaultValue={jobSeeker.coverLetter}
+                  rows="10"
+                ></textarea>
+              ) : null}
 
               <div className="modal-footer justify-content-center">
                 <button
@@ -515,8 +550,13 @@ export default function JobSeekerProfile() {
         </div>
       </div>
 
-      {/* Edit Social Icons */}
-      <div id="editSocials" className="modal fade" tabIndex="-1" aria-hidden="true">
+      {/* EDİT Social Icons */}
+      <div
+        id="editSocials"
+        className="modal fade"
+        tabIndex="-1"
+        aria-hidden="true"
+      >
         <div className="modal-dialog modal-confirm">
           <div className="modal-content">
             <div className="modal-header flex-column">
@@ -559,7 +599,7 @@ export default function JobSeekerProfile() {
                     variant="outlined"
                   />
                 </div>
-              ):null}
+              ) : null}
 
               <div className="modal-footer justify-content-center">
                 <button
@@ -576,7 +616,258 @@ export default function JobSeekerProfile() {
             </div>
           </div>
         </div>
-      </div>         
+      </div>
+
+      {/* Add School Icons */}
+      <div
+        id="editSchools"
+        className="modal fade"
+        tabIndex="-1"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-confirm">
+          <div className="modal-content">
+            <div className="modal-header flex-column">
+              <h4 className="editContact-title w-100">Add Education</h4>
+              <button
+                type="button"
+                className="btn-close close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+
+              {jobSeeker ? (
+                <div>
+                  <TextField
+                    id="outlined-required"
+                    className="contactForm w-100"
+                    label="Department"
+                    variant="outlined"
+                  />
+                  <TextField
+                    id="outlined-required"
+                    className="contactForm w-100"
+                    label="School Name"
+                    variant="outlined"
+                  />
+
+                  <div className="row">
+                    <div className="col-6 ">
+                      <label className="float-top text-left">Start Date</label>
+                      <input
+                        id="outlined-required"
+                        className="dateForm form-control float-bottom w-100 "
+                        type="month"
+                        label="Start Year"
+                        variant="outlined"
+                      />
+                    </div>
+
+                    <div className="col-6 ">
+                      <label className="float-top text-left">Finish Date</label>
+                      <input
+                        id="outlined-required"
+                        className="dateForm form-control float-bottom w-100 "
+                        type="month"
+                        label="Start Year"
+                        variant="outlined"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ) : null}
+
+              <div className="modal-footer justify-content-center">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button type="button" className="btn btn-primary">
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Add Experiene Icons */}
+      <div
+        id="editExperiences"
+        className="modal fade"
+        tabIndex="-1"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-confirm">
+          <div className="modal-content">
+            <div className="modal-header flex-column">
+              <h4 className="editContact-title w-100">Add Experience</h4>
+              <button
+                type="button"
+                className="btn-close close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+
+              {jobSeeker ? (
+                <div>
+                  <TextField
+                    id="outlined-required"
+                    className="contactForm w-100"
+                    label="Workplace Name"
+                    variant="outlined"
+                  />
+                  <TextField
+                    id="outlined-required"
+                    className="contactForm w-100"
+                    label="Explanation"
+                    variant="outlined"
+                  />
+
+                  <select
+                    className="form-select mb-4"
+                    aria-label="Default select example"
+                  >
+                    {jobPositions?.map((jobPosition) => (
+                      <option value={jobPosition.id} key={jobPosition.id}>
+                        {jobPosition.positionName}
+                      </option>
+                    ))}
+                  </select>
+
+                  <div className="row">
+                    <div className="col-6 ">
+                      <label className="float-top text-left">Start Date</label>
+                      <input
+                        id="outlined-required"
+                        className="dateForm form-control float-bottom w-100 "
+                        type="month"
+                        label="Start Year"
+                        variant="outlined"
+                      />
+                    </div>
+
+                    <div className="col-6 ">
+                      <label className="float-top text-left">Finish Date</label>
+                      <input
+                        id="outlined-required"
+                        className="dateForm form-control float-bottom w-100 "
+                        type="month"
+                        label="Start Year"
+                        variant="outlined"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ) : null}
+
+              <div className="modal-footer justify-content-center">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button type="button" className="btn btn-primary">
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      {/* Add Reference Icons */}
+      <div
+        id="editExperiences"
+        className="modal fade"
+        tabIndex="-1"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-confirm">
+          <div className="modal-content">
+            <div className="modal-header flex-column">
+              <h4 className="editContact-title w-100">Add Experience</h4>
+              <button
+                type="button"
+                className="btn-close close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+
+              {jobSeeker ? (
+                <div>
+                  <TextField
+                    id="outlined-required"
+                    className="contactForm w-100"
+                    label="Workplace Name"
+                    variant="outlined"
+                  />
+                  <TextField
+                    id="outlined-required"
+                    className="contactForm w-100"
+                    label="Explanation"
+                    variant="outlined"
+                  />
+
+                  <select
+                    className="form-select mb-4"
+                    aria-label="Default select example"
+                  >
+                    {jobPositions?.map((jobPosition) => (
+                      <option value={jobPosition.id} key={jobPosition.id}>
+                        {jobPosition.positionName}
+                      </option>
+                    ))}
+                  </select>
+
+                  <div className="row">
+                    <div className="col-6 ">
+                      <label className="float-top text-left">Start Date</label>
+                      <input
+                        id="outlined-required"
+                        className="dateForm form-control float-bottom w-100 "
+                        type="month"
+                        label="Start Year"
+                        variant="outlined"
+                      />
+                    </div>
+
+                    <div className="col-6 ">
+                      <label className="float-top text-left">Finish Date</label>
+                      <input
+                        id="outlined-required"
+                        className="dateForm form-control float-bottom w-100 "
+                        type="month"
+                        label="Start Year"
+                        variant="outlined"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ) : null}
+
+              <div className="modal-footer justify-content-center">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button type="button" className="btn btn-primary">
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
     </div>
