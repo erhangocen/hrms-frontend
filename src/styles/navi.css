@@ -1,0 +1,50 @@
+.navbar{
+    margin: 0 !important;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    transition: 1s;
+    top: 0px;
+}
+
+.nav-texts{
+    color: white !important;
+}
+
+.black .nav-texts{
+    color: black !important;
+}
+
+
+.black{
+    background-color: white;
+    transition: 1s;
+}
+
+.searchbar{
+    float: right;   
+    width: 200px;
+    margin-right: 40%;
+    transition: 1s;
+}
+
+.black .search{
+    border: 1px solid rgb(0, 0, 0);
+    transition: 1s;
+    color: black;
+}
+
+.search{
+    background-color: rgba(255, 255, 255, 0.267) !important;
+    color: white;
+}
+
+
+.sb{
+    border-radius: 50px;
+}
+
+.float-right{
+    display: flex;
+    float: right !important;
+}

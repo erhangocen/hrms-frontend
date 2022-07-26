@@ -9,7 +9,7 @@ import JobPositionService from "../../services/JobPositionService";
 import "../../styles/jobSeekerProfile.css";
 
 export default function JobSeekerProfile() {
-  const [jobSeeker, setJobSeker] = useState();
+  const [jobSeeker, setJobSeeker] = useState();
   const [photo, setPhoto] = useState();
   const [certificates, setCertificates] = useState([]);
   const [references, setReferences] = useState([]);
@@ -24,12 +24,12 @@ export default function JobSeekerProfile() {
   const [languages, setLanguages] = useState([])
   const [skills, setSkills] = useState([])
 
-  const [value, setValue] = React.useState(0);
+  const [star, setStar] = React.useState(0);
 
   useEffect(() => {
     let jobSeekerService = new JobSeekerService();
     jobSeekerService.getCvByUserId(6).then((result) => {
-      setJobSeker(result.data.data.jobSeeker);
+      setJobSeeker(result.data.data.jobSeeker);
       setPhoto(result.data.data.photo);
       setCertificates(result.data.data.jobSeekerCertificates);
       setReferences(result.data.data.jobSeekerReferences);
@@ -105,7 +105,7 @@ export default function JobSeekerProfile() {
               <section className="home" id="home">
                 <div className="home__container section bd-grid">
                   <div className="home__data bd-grid">
-                    <img src={photo?.photoUrl} alt="" className="home__img" />
+                    <img src={photo?.photoUrl} className="home__img" />
                     <h1 className="home__title">
                       <b>
                         {jobSeeker?.firstName} {jobSeeker?.lastName}
@@ -113,7 +113,7 @@ export default function JobSeekerProfile() {
                     </h1>
                     <h3 className="home__profession">
                       {" "}
-                      Year : {localeYear - jobSeeker?.birthYear}
+                      Age : {localeYear - jobSeeker?.birthYear}
                     </h3>
                   </div>
                   <div className="home_address bd-grid">
@@ -367,7 +367,9 @@ export default function JobSeekerProfile() {
               </section>
 
               <section className="skills section" id="skills">
-                <i className="bi bi-plus-square-fill add__button editing skills__add"></i>
+                <i className="bi bi-plus-square-fill add__button editing skills__add"
+                    data-bs-toggle="modal"
+                    data-bs-target="#addSkill"></i>
                 <h2 className="section-title">Skills</h2>
                 <div className="skills__container">
                   <ul className="skills__content bd-grid">
@@ -981,9 +983,9 @@ export default function JobSeekerProfile() {
                       <div className="col-5 mt-4">
                         <Rating
                           name="simple-controlled"
-                          value={value}
+                          value={star}
                           onChange={(event, newValue) => {
-                            setValue(newValue);
+                            setStar(newValue);
                           }}
                         />
                       </div>
@@ -1008,6 +1010,64 @@ export default function JobSeekerProfile() {
           </div>
         </div>
       </div>
+
+        
+      {/* Add Skill */}
+      <div
+        id="addSkill"
+        className="modal fade"
+        tabIndex="-1"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-confirm">
+          <div className="modal-content">
+            <div className="modal-header flex-column">
+              <h4 className="editContact-title w-100">Add Skill</h4>
+              <button
+                type="button"
+                className="btn-close close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+
+              {jobSeeker ? (
+                <div>
+                  <label className="float-top text-left">Skill</label>
+                  <select
+                    className="form-select mb-4"
+                    aria-label="Default select example"
+                  >
+                    <option value={" "}> 
+                      ---Select Skill---
+                    </option>
+                    {skills?.map((skill) => (
+                      <option value={skill.id} key={skill.id}>
+                        {skill.skillName}
+                      </option>
+                    ))}
+                    
+                  </select>
+                </div>
+              ) : null}
+
+              <div className="modal-footer justify-content-center">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button type="button" className="btn btn-primary">
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
 
       {/* Add Position */}
       <div

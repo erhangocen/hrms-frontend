@@ -7,8 +7,8 @@ export default function Profile() {
   return (
     <div>
         <JobSeekerProfile/>
-        <EmplooyerProfile/>
-        <SystemUserProile/>
+        {/* <EmplooyerProfile/>
+        <SystemUserProile/> */}
     </div>
   )
 }

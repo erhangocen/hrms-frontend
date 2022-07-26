@@ -9,12 +9,12 @@ import Profile from './Profile'
 export default function Dashboard() {
   return (
     <div> 
-        <MainPage/>
+        <Profile/>
+        {/* <MainPage/>
         <AdvertisementDetails/>
         <AdminPanel/>
         <Form/>
-        <Profile/>
-        <MainAdvertisement/>
+        <MainAdvertisement/> */}
     </div>
   )
 }
