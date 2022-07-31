@@ -26,14 +26,14 @@ export default function Navi() {
         <div className="col-9">
           <a class="navbar-brand nav-texts m-lg-5" href="#">
             <img
-              src="https://getbootstrap.com/docs/4.3/assets/brand/bootstrap-solid.svg"
+              src="https://yt3.ggpht.com/ytc/AMLnZu96F20-p5_kjvNwEsHkmY_y1FvRdVENYBwlkyVhkQ=s900-c-k-c0x00ffffff-no-rj"
               width="30"
               height="30"
               class="d-inline-block align-top"
               alt=""
             />
-            <span className="m-lg-3">
-              Bootstrap
+            <span className="m-lg-2">
+              kariyer.net
             </span>
           </a>
           <SearchBar/>
