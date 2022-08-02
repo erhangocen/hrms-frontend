@@ -50,21 +50,21 @@ export default function JobSeekerProfile() {
 
   useState(() => {
     let jobPositionService = new JobPositionService();
-    jobPositionService.getAllJobPositions().then((result) => {
+    jobPositionService.getNoHaveJobPositions(6).then((result) => {
       setJobPositions(result.data.data);
     });
   });
 
   useState(() => {
     let languageService = new LanguageService();
-    languageService.getAllLanguages().then((result) => {
+    languageService.getNoHaveLanguages(6).then((result) => {
       setLanguages(result.data.data);
     });
   });
 
   useState(() => {
     let skillService = new SkillService();
-    skillService.getAllSkills().then((result) => {
+    skillService.getNoHaveSkills(6).then((result) => {
       setSkills(result.data.data);
     });
   });

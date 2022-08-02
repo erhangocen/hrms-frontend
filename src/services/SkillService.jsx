@@ -16,4 +16,8 @@ export default class SkillService {
     getAllSkills(){
         return axios.get(this.apiUrl+"getAll")
     }
+
+    getNoHaveSkills(userId){
+        return axios.get(this.apiUrl+"getNoHaveSkills?userId="+userId)
+    }
 }

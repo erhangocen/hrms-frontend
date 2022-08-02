@@ -15,4 +15,8 @@ export default class LanguageService{
     getAllLanguages(){
         return axios.get(this.apiUrl+"getAll")
     }
+
+    getNoHaveLanguages(userId){
+        return axios.get(this.apiUrl+"getNoHaveLanguages?userId="+userId)
+    }
 }

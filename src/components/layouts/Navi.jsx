@@ -22,9 +22,9 @@ export default function Navi() {
 
   return (
     <div className="w-100 raw">
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-lg navbar-light pt-2">
         <div className="col-9">
-          <a class="navbar-brand nav-texts m-lg-5" href="#">
+          <a class="navbar-brand nav-texts m-4" href="#">
             <img
               src="https://yt3.ggpht.com/ytc/AMLnZu96F20-p5_kjvNwEsHkmY_y1FvRdVENYBwlkyVhkQ=s900-c-k-c0x00ffffff-no-rj"
               width="30"
@@ -35,7 +35,7 @@ export default function Navi() {
             <span className="m-lg-2">
               kariyer.net
             </span>
-          </a>
+          </a>     
           <SearchBar/>
         </div>
 

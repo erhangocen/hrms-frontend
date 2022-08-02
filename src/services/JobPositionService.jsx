@@ -15,4 +15,8 @@ export default class JobPositionService {
     getAllJobPositions(){
         return axios.get(this.apiUrl+"getAll")
     }
+
+    getNoHaveJobPositions(userId){
+        return axios.get(this.apiUrl+"getNoHavePositions?userId="+userId)
+    }
 }
