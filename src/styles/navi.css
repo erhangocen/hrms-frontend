@@ -8,11 +8,11 @@
 }
 
 .nav-texts{
-    color: white !important;
+    color: rgb(255, 255, 255) !important;
 }
 
 .black .nav-texts{
-    color: black !important;
+    color: black !important; 
 }
 
 
@@ -36,7 +36,7 @@
 
 .search{
     background-color: rgba(255, 255, 255, 0.267) !important;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 

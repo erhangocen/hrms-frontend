@@ -1,0 +1,236 @@
+:root {
+    /*========== Colors ==========*/
+    /* Color mode HSL & RGB */
+    --first-color: hsl(257, 89%, 48%);
+    --white-color: hsla(0, 0%, 100%, 0.578);
+    --black-color: #000;
+  
+    /*========== Font and typography ==========*/
+    /*.5rem = 8px | 1rem = 16px ...*/
+    --body-font: 'Poppins', sans-serif;
+    --normal-font-size: .938rem;
+    --tiny-font-size: .563rem;
+  }
+
+
+.card{
+    margin-bottom:20px;
+    border:none;
+    background-color: transparent;
+}
+
+.box {
+    width: 450px;
+    padding: 40px;
+    position: relative;
+    left: 65%;
+    background: var(--white-color);
+    text-align: center;
+    transition: 0.25s;
+    margin-top: 150px;
+    margin-bottom: 100px;
+    border-radius: 5%;
+
+}
+
+.box h1 {
+    color: rgba(21, 19, 19, 0.9);
+    text-transform: uppercase;
+    font-weight: 500
+}
+
+.box p {
+    color: rgb(53, 53, 53) !important;
+}
+
+.forgot {
+    text-decoration: underline
+}
+
+ul.social-network {
+    list-style: none;
+    display: inline;
+    margin-left: 0 !important;
+    padding: 0
+}
+
+ul.social-network li {
+    display: inline;
+    margin: 0 5px
+}
+
+.social-network a.icoFacebook:hover {
+    background-color: #3B5998
+}
+
+.social-network a.icoTwitter:hover {
+    background-color: #33ccff
+}
+
+.social-network a.icoGoogle:hover {
+    background-color: #BD3518
+}
+
+.social-network a.icoFacebook:hover i,
+.social-network a.icoTwitter:hover i,
+.social-network a.icoGoogle:hover i {
+    color: #fff
+}
+
+a.socialIcon:hover,
+.socialHoverClass {
+    color: #44BCDD
+}
+
+.social-circle li a {
+    display: inline-block;
+    position: relative;
+    margin: 0 auto 0 auto;
+    border-radius: 50%;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    font-size: 20px
+}
+
+.social-circle li i {
+    margin: 0;
+    line-height: 50px;
+    text-align: center
+}
+
+.social-circle li a:hover i,
+.triggeredHover {
+    transform: rotate(360deg);
+    transition: all 0.2s
+}
+
+.social-circle i {
+    color: rgb(6, 6, 6);
+    transition: all 0.8s;
+    transition: all 0.8s
+}
+
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+
+
+/* Responsive typography */
+@media screen and (min-width: 968px) {
+  :root {
+    --normal-font-size: 1rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+
+/*=============== MODERN INPUT ===============*/
+.form {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  margin: 0 1.5rem;
+}
+
+.form__content {
+  display: grid;
+  row-gap: 1.5rem;
+}
+
+.form__input, 
+.form__label, 
+.form__submit {
+  border: 0;
+  outline: none;
+  font-size: var(--normal-font-size);
+  font-family: var(--body-font);
+}
+
+.form__box {
+  width: 312px;
+  height: 59px;
+}
+
+
+.form__input {
+  border: 2.5px solid var(--black-color);
+  background-color: var(--white-color);
+  width: 100%;
+  height: 100%;
+  padding: 18px;
+  margin: 20px 0px 20px 30px;
+  transition: transform .3s;
+}
+
+.form__input::placeholder {
+  transition: opacity .5s;
+}
+
+
+.form__button {
+  justify-self: flex-end;
+}
+
+.form__submit {
+  padding: .875rem 1.5rem;
+  color: var(--black-color);
+  background-color: var(--first-color);
+  cursor: pointer;
+  transition: transform .3s;
+  margin: 50px 0px 10px 200px;
+}
+
+.form__submit:hover {
+  transform: translate(-6px, -6px);
+}
+
+/* Opaque placeholder */
+.form__input:focus::placeholder {
+  opacity: 0;
+  transition: .3s;
+}
+
+/* Move input and sticky input up */
+.form__input:focus, 
+.form__input:not(:placeholder-shown).form__input:not(:focus) {
+  transform: translate(-8px, -8px);
+  animation: input-animation .5s;
+}
+
+
+/* Input bounce animation */
+@keyframes input-animation {
+  0% {
+    transform: translate(0);
+  }
+  40% {
+    transform: translate(-9px, -9px);
+  }
+  60% {
+    transform: translate(-7px, -7px);
+  }
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 340px) {
+  .form__content, 
+  .form__box {
+    width: 100%;
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 968px) {
+  .form__content {
+    zoom: 1.1;
+  }
+}

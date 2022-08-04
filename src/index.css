@@ -9,8 +9,7 @@ body {
   background-image: url(/public/bg.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 1920px ;
-  background-blend-mode: normal;
+  background-size: cover;
 }
 
 code {

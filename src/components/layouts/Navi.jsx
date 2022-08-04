@@ -21,8 +21,8 @@ export default function Navi() {
   let a = false;
 
   return (
-    <div className="w-100 raw">
-      <nav class="navbar navbar-expand-lg navbar-light pt-2">
+     <div className="w-100 raw">
+       <nav class="navbar navbar-expand-lg navbar-light pt-2">
         <div className="col-9">
           <a class="navbar-brand nav-texts m-4" href="#">
             <img
@@ -71,8 +71,8 @@ export default function Navi() {
         </div>
 
          
-      </nav>
-      
-    </div>
+      </nav> 
+    </div> 
+    
   );
 }
