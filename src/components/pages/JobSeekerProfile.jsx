@@ -41,28 +41,28 @@ export default function JobSeekerProfile() {
     });
   });
 
-  useState(() => {
+  useEffect(() => {
     let cityService = new CityService();
     cityService.getAllCities().then((result) => {
       setCities(result.data.data);
     });
   });
 
-  useState(() => {
+  useEffect(() => {
     let jobPositionService = new JobPositionService();
     jobPositionService.getNoHaveJobPositions(6).then((result) => {
       setJobPositions(result.data.data);
     });
   });
 
-  useState(() => {
+  useEffect(() => {
     let languageService = new LanguageService();
     languageService.getNoHaveLanguages(6).then((result) => {
       setLanguages(result.data.data);
     });
   });
 
-  useState(() => {
+  useEffect(() => {
     let skillService = new SkillService();
     skillService.getNoHaveSkills(6).then((result) => {
       setSkills(result.data.data);

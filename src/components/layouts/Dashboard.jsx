@@ -9,10 +9,10 @@ import Profile from './Profile'
 export default function Dashboard() {
   return (
     <div> 
-        {/* <Profile/>
-        <MainPage/>
-        <AdvertisementDetails/>
-        <AdminPanel/> */}
+        {/* <Profile/> */}
+        {/* <MainPage/> */}
+        {/* <AdvertisementDetails/> */}
+        {/* <AdminPanel/> */}
         <Form/>
         {/* <MainAdvertisement/> */}
     </div>
