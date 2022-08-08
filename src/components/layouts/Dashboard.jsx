@@ -10,10 +10,10 @@ export default function Dashboard() {
   return (
     <div> 
         {/* <Profile/> */}
-        {/* <MainPage/> */}
+        <MainPage/>
         {/* <AdvertisementDetails/> */}
         {/* <AdminPanel/> */}
-        <Form/>
+        {/* <Form/> */}
         {/* <MainAdvertisement/> */}
     </div>
   )

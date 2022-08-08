@@ -8,9 +8,9 @@ export default function MainPage() {
   return (
     <div>
       <DefaultMainPage/>
-      <EmplooyerMainPage/>
-      <JobSeekerMainPage/>
-      <SystemUserMainPage/>
+      {/* <EmplooyerMainPage/> */}
+      {/* <JobSeekerMainPage/> */}
+      {/* <SystemUserMainPage/> */}
     </div>
   )
 }
