@@ -18,7 +18,7 @@ export default function Navi() {
     }
 })
 
-  let a = false;
+  let a = true;
 
   return (
      <div className="w-100 raw">

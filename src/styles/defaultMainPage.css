@@ -160,6 +160,7 @@ img {
   margin-bottom: 1rem;
 }
 
+
 .islands__button {
   display: inline-flex;
   align-items: center;
@@ -168,6 +169,10 @@ img {
   color: var(--first-color);
   border-radius: .5rem;
   font-weight: var(--font-medium);
+}
+
+.gallery-thumbs{
+  background-color: #ffffff89 !important;
 }
 
 .islands__button:hover {
@@ -198,8 +203,8 @@ img {
 }
 
 .controls__img {
-  width: 35px;
-  height: 35px;
+  width: 60px !important;
+  height: 60px !important;
   border-radius: .5rem;
   cursor: pointer;
 }
