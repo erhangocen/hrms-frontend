@@ -9,7 +9,7 @@ export default function Form() {
       <div class="container"> 
         <div class="row"> 
           <div class="col-md-6"> 
-            <div class="card"> 
+            <div class="login-card"> 
               {/* <LogInForm/> */}
               <RegisterForm/>
             </div>

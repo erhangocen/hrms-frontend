@@ -26,7 +26,7 @@ export default function Navi() {
         <div className="col-9">
           <a class="navbar-brand nav-texts m-4" href="#">
             <img
-              src="https://yt3.ggpht.com/ytc/AMLnZu96F20-p5_kjvNwEsHkmY_y1FvRdVENYBwlkyVhkQ=s900-c-k-c0x00ffffff-no-rj"
+              src="https://github.com/erhangocen/hrms-frontend/blob/master/public/kariyer.jpg?raw=true"
               width="30"
               height="30"
               class="d-inline-block align-top"

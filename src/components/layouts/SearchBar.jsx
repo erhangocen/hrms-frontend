@@ -59,7 +59,7 @@ export default function SearchBar() {
    
 
 <form class="form-inline searchbar">
- <Search className='search'>
+ <Search className='search' typeof='search'>
     <SearchIconWrapper>
       <SearchIcon />
     </SearchIconWrapper>

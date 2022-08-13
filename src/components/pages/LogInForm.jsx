@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function LogInForm() {
   return (
-    <form onsubmit="event.preventDefault()" class="box"> 
+    <form onsubmit="event.preventDefault()" class="login-box"> 
       <h1>Login</h1> 
       <p class="text-muted mt-3"> Please enter your email and password!</p> 
       <div class="form__box mt-3">
@@ -17,7 +17,7 @@ export default function LogInForm() {
           <input type="Submit" class="form__submit" value="Sign Up"/>
       </div>
       <div class="col-md-12"> 
-        <ul class="social-network social-circle"> 
+        <ul class="login-social-network social-circle"> 
           <li>
             <a href="#" class="icoFacebook" title="Facebook">
               <i class='bx bxl-facebook'></i>

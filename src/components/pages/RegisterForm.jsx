@@ -22,7 +22,7 @@ export default function RegisterForm() {
     });
 
   return (
-    <form onsubmit="event.preventDefault()" class="box"> 
+    <form onsubmit="event.preventDefault()" class="login-box"> 
       <h1>Register</h1> 
       <p class="text-muted mt-3"> Please enter fields!</p>  
 
@@ -30,7 +30,6 @@ export default function RegisterForm() {
       <RegisterForJobSeeker/>
 
       <RegisterForEmployer/>
-
 
       <FormControl fullWidth className="mt-4">
         <InputLabel id="demo-simple-select-label">City</InputLabel>
@@ -72,7 +71,7 @@ export default function RegisterForm() {
           <input type="Submit" class="form__submit" value="Sign Up"/>
       </div>
       <div class="col-md-12"> 
-        <ul class="social-network social-circle"> 
+        <ul class="login-social-network social-circle"> 
           <li>
             <a href="#" class="icoFacebook" title="Facebook">
               <i class='bx bxl-facebook'></i>

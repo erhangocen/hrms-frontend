@@ -33,7 +33,8 @@ export default function DefaultMainPage() {
                         modules={[Navigation, Thumbs]} 
                         thumbs={{swiper:activeThumb}}
                         direction= "horizontal"
-                        mousewheel={{sensitivity:1}}
+                        speed={600}
+                        simulateTouch={false}
                         navigation={{
                             prevEl: '.prev',
                             nextEl: '.next',
@@ -75,7 +76,8 @@ export default function DefaultMainPage() {
                     <div class="controls__container swiper-wrapper">
                         <Swiper style={{all: 'unset'}}
                             modules={[Navigation,Thumbs]}
-                            onSwiper={setActiveThumb}>
+                            onSwiper={setActiveThumb}
+                            simulateTouch={false}>
                            <SwiperSlide style={{all: 'unset'}} className="prev thumb__swip">
                                 <img src="https://github.com/erhangocen/hrms-frontend/blob/master/public/employee.jpg?raw=true" style={{width:"50%", borderRadius:"20%", marginLeft:"9%"}} alt="" class="controls__img swiper-slide"/>
                             </SwiperSlide>

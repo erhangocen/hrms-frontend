@@ -6,7 +6,7 @@ import CityService from "../../services/CityService";
 import SkillService from "../../services/SkillService";
 import LanguageService from "../../services/LanguageService";
 import JobPositionService from "../../services/JobPositionService";
-import "../../styles/jobSeekerProfile.css";
+import  "../../styles/jobSeekerProfile.css";
 
 export default function JobSeekerProfile() {
   const [jobSeeker, setJobSeeker] = useState();
@@ -94,7 +94,7 @@ export default function JobSeekerProfile() {
 
   return (
     <div>
-      <div id="main-div">
+      <div id="main-div"> 
         <main
           className="l-main bd-container"
           onMouseOver={editing}

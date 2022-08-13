@@ -35,10 +35,18 @@
 }
 
 .search{
+    width: auto;
     background-color: rgba(255, 255, 255, 0.267) !important;
     color: rgb(0, 0, 0);
     z-index: 1;
+    
 }
+
+.searchbar:focus-within{  
+    width: 300px;
+    margin-right: 35%;
+}
+
 
 
 .sb{

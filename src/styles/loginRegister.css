@@ -1,30 +1,30 @@
 :root {
     /*========== Colors ==========*/
     /* Color mode HSL & RGB */
-    --first-color: #9CD3D8;
-    --white-color: #f2f2f2;
-    --black-color: #000;
+    --login-first-color: #9CD3D8;
+    --login-white-color: #f2f2f2;
+    --login-black-color: #000;
   
     /*========== Font and typography ==========*/
     /*.5rem = 8px | 1rem = 16px ...*/
-    --body-font: 'Poppins', sans-serif;
-    --normal-font-size: .938rem;
-    --tiny-font-size: .563rem;
+    --login-body-font: 'Poppins', sans-serif;
+    --login-normal-font-size: .938rem;
+    --login-tiny-font-size: .563rem;
   }
 
 
-.card{
+.login-card{
     margin-bottom:20px;
     border:none;
     background-color: transparent;
 }
 
-.box {
+.login-box {
     width: 450px;
     padding: 40px;
     position: relative;
     left: 65%;
-    background: var(--white-color);
+    background: var(--login-white-color);
     text-align: center;
     transition: 0.25s;
     margin-top: 100px;
@@ -34,47 +34,47 @@
 
 }
 
-.box h1 {
+.login-box h1 {
     color: rgba(21, 19, 19, 0.9);
     text-transform: uppercase;
     font-weight: 500
 }
 
-.box p {
+.login-box p {
     color: rgb(53, 53, 53) !important;
 }
 
-.forgot {
+.login-forgot {
     text-decoration: underline
 }
 
-ul.social-network {
+ul.login-social-network {
     list-style: none;
     display: inline;
     margin-left: 0 !important;
     padding: 0
 }
 
-ul.social-network li {
+ul.login-social-network li {
     display: inline;
     margin: 0 5px
 }
 
-.social-network a.icoFacebook:hover {
+.login-social-network a.icoFacebook:hover {
     background-color: #3B5998
 }
 
-.social-network a.icoTwitter:hover {
+.login-social-network a.icoTwitter:hover {
     background-color: #33ccff
 }
 
-.social-network a.icoGoogle:hover {
+.login-social-network a.icoGoogle:hover {
     background-color: #BD3518
 }
 
-.social-network a.icoFacebook:hover i,
-.social-network a.icoTwitter:hover i,
-.social-network a.icoGoogle:hover i {
+.login-social-network a.icoFacebook:hover i,
+.login-social-network a.icoTwitter:hover i,
+.login-social-network a.icoGoogle:hover i {
     color: #fff
 }
 
@@ -121,13 +121,13 @@ a.socialIcon:hover,
 /* Responsive typography */
 @media screen and (min-width: 968px) {
   :root {
-    --normal-font-size: 1rem;
+    --login-normal-font-size: 1rem;
   }
 }
 
 /*=============== BASE ===============*/
 * {
-  box-sizing: border-box;
+  login-box-sizing: border-login-box;
   padding: 0;
   margin: 0;
 }
@@ -151,19 +151,19 @@ a.socialIcon:hover,
 .form__submit {
   border: 0;
   outline: none;
-  font-size: var(--normal-font-size);
-  font-family: var(--body-font);
+  font-size: var(--login-normal-font-size);
+  font-family: var(--login-body-font);
 }
 
-.form__box {
+.form__login-box {
   width: 312px;
   height: 59px;
 }
 
 
 .form__input {
-  border: 2.5px solid var(--black-color);
-  background-color: var(--white-color);
+  border: 2.5px solid var(--login-black-color);
+  background-color: var(--login-white-color);
   width: 100%;
   height: 100%;
   padding: 18px;
@@ -182,8 +182,8 @@ a.socialIcon:hover,
 
 .form__submit {
   padding: .875rem 1.5rem;
-  color: var(--black-color);
-  background-color: var(--first-color);
+  color: var(--login-black-color);
+  background-color: var(--login-first-color);
   cursor: pointer;
   transition: transform .3s;
   margin: 20px 0px 10px 250px;
@@ -224,7 +224,7 @@ a.socialIcon:hover,
 /* For small devices */
 @media screen and (max-width: 340px) {
   .form__content, 
-  .form__box {
+  .form__login-box {
     width: 100%;
   }
 }
