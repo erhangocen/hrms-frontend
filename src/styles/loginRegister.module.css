@@ -13,13 +13,13 @@
   }
 
 
-.login-card{
+.loginCard{
     margin-bottom:20px;
     border:none;
     background-color: transparent;
 }
 
-.login-box {
+.loginBox {
     width: 450px;
     padding: 40px;
     position: relative;
@@ -34,47 +34,47 @@
 
 }
 
-.login-box h1 {
+.loginBox h1 {
     color: rgba(21, 19, 19, 0.9);
     text-transform: uppercase;
     font-weight: 500
 }
 
-.login-box p {
+.loginBox p {
     color: rgb(53, 53, 53) !important;
 }
 
-.login-forgot {
+.loginForgot {
     text-decoration: underline
 }
 
-ul.login-social-network {
+ul.loginSocialNetwork {
     list-style: none;
     display: inline;
     margin-left: 0 !important;
     padding: 0
 }
 
-ul.login-social-network li {
+ul.loginSocialNetwork li {
     display: inline;
     margin: 0 5px
 }
 
-.login-social-network a.icoFacebook:hover {
+.loginSocialNetwork a.icoFacebook:hover {
     background-color: #3B5998
 }
 
-.login-social-network a.icoTwitter:hover {
+.loginSocialNetwork a.icoTwitter:hover {
     background-color: #33ccff
 }
 
-.login-social-network a.icoGoogle:hover {
+.loginSocialNetwork a.icoGoogle:hover {
     background-color: #BD3518
 }
 
-.login-social-network a.icoFacebook:hover i,
-.login-social-network a.icoTwitter:hover i,
-.login-social-network a.icoGoogle:hover i {
+.loginSocialNetwork a.icoFacebook:hover i,
+.loginSocialNetwork a.icoTwitter:hover i,
+.loginSocialNetwork a.icoGoogle:hover i {
     color: #fff
 }
 
@@ -83,7 +83,7 @@ a.socialIcon:hover,
     color: #44BCDD
 }
 
-.social-circle li a {
+.socialCircle li a {
     display: inline-block;
     position: relative;
     margin: 0 auto 0 auto;
@@ -94,19 +94,19 @@ a.socialIcon:hover,
     font-size: 20px
 }
 
-.social-circle li i {
+.socialCircle li i {
     margin: 0;
     line-height: 50px;
     text-align: center
 }
 
-.social-circle li a:hover i,
+.socialCircle li a:hover i,
 .triggeredHover {
     transform: rotate(360deg);
     transition: all 0.2s
 }
 
-.social-circle i {
+.socialCircle i {
     color: rgb(6, 6, 6);
     transition: all 0.8s;
     transition: all 0.8s
@@ -127,7 +127,7 @@ a.socialIcon:hover,
 
 /*=============== BASE ===============*/
 * {
-  login-box-sizing: border-login-box;
+  loginBox-sizing: border-loginBox;
   padding: 0;
   margin: 0;
 }
@@ -155,7 +155,7 @@ a.socialIcon:hover,
   font-family: var(--login-body-font);
 }
 
-.form__login-box {
+.form__loginBox {
   width: 312px;
   height: 59px;
 }
@@ -224,7 +224,7 @@ a.socialIcon:hover,
 /* For small devices */
 @media screen and (max-width: 340px) {
   .form__content, 
-  .form__login-box {
+  .form__loginBox {
     width: 100%;
   }
 }

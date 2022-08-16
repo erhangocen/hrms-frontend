@@ -6,7 +6,8 @@ import CityService from "../../services/CityService";
 import SkillService from "../../services/SkillService";
 import LanguageService from "../../services/LanguageService";
 import JobPositionService from "../../services/JobPositionService";
-import  "../../styles/jobSeekerProfile.css";
+import styles from "../../styles/jobSeekerProfile.module.css";
+import { style } from "@mui/system";
 
 export default function JobSeekerProfile() {
   const [jobSeeker, setJobSeeker] = useState();
@@ -94,125 +95,125 @@ export default function JobSeekerProfile() {
 
   return (
     <div>
-      <div id="main-div"> 
+      <div className={styles.mainDiv}> 
         <main
-          className="l-main bd-container"
+          className={styles.bdContainer + " l-main bd-container"}
           onMouseOver={editing}
           onMouseLeave={endEditing}
         >
-          <div className="resume" id="area-cv">
-            <div className="resume__left">
-              <section className="home" id="home">
-                <div className="home__container section bd-grid">
-                  <div className="home__data bd-grid">
-                    <img src={photo?.photoUrl} className="home__img" />
-                    <h1 className="home__title">
+          <div className={styles.resume} id="area-cv">
+            <div className={styles.resume__left}>
+              <section className={styles.home} id="home">
+                <div className={styles.home__container + " " + styles.section+ " " + styles.bdGrid + " bd-grid"}>
+                  <div className={styles.home__data + " " + styles.bdGrid + " bd-grid"}>
+                    <img src={photo?.photoUrl} className={styles.home__img} />
+                    <h1 className={styles.home__title}>
                       <b>
                         {jobSeeker?.firstName} {jobSeeker?.lastName}
                       </b>
                     </h1>
-                    <h3 className="home__profession">
+                    <h3 className={styles.home__profession}>
                       {" "}
                       Age : {localeYear - jobSeeker?.birthYear}
                     </h3>
                   </div>
-                  <div className="home_address bd-grid">
-                    <span className="home__information">
-                      <i className="bx bx-map home__icon"></i>{" "}
+                  <div className={styles.home_address + " " +  styles.bdGrid + " bd-grid"}>
+                    <span className={styles.home__information}>
+                      <i className={styles.home__icon + " bx bx-map"}></i>{" "}
                       {jobSeeker?.city.cityName +
                         " - " +
                         jobSeeker?.city.countryName}
                     </span>
-                    <span className="home__information">
-                      <i className="bx bx-envelope home__icon"></i>{" "}
+                    <span className={styles.home__information}>
+                      <i className={styles.home__icon + " bx bx-envelope"}></i>{" "}
                       {jobSeeker?.email}
                     </span>
-                    <span className="home__information">
-                      <i className="bx bx-phone home__icon"></i>{" "}
+                    <span className={styles.home__information}>
+                      <i className={styles.home__icon + " bx bx-phone"}></i>{" "}
                       {jobSeeker?.phoneNumber}
                     </span>
                   </div>
                 </div>
                 <i
-                  className="bi bi-pencil-square main__edit__button editing"
+                  className={styles.main__edit__button + " " + styles.editing + " bi bi-pencil-square main__edit__button editing"}
                   data-bs-toggle="modal"
                   data-bs-target="#editContact"
                 ></i>
               </section>
 
-              <section className="profile section" id="profile">
-                <div className="profile__header">
+              <section className={styles.profile + " " + styles.section} id="profile">
+                <div className={styles.profile__header}>
                   <i
-                    className="bi bi-pencil-square edit__button editing"
+                    className={styles.edit__button + " " + styles.editing + " bi bi-pencil-square edit__button editing"}
                     data-bs-toggle="modal"
                     data-bs-target="#editCoverLetter"
                   ></i>
-                  <h2 className="section-title">Profile</h2>
+                  <h2 className={styles.sectionTitle}>Profile</h2>
                 </div>
-                <p className="profile__description">{jobSeeker?.coverLetter}</p>
+                <p className={styles.profile__description}>{jobSeeker?.coverLetter}</p>
               </section>
 
-              <section className="social section" id="social">
-                <div className="social__header">
+              <section className={styles.social + " " + styles.section} id="social">
+                <div className={styles.social__header}>
                   <i
-                    className="bi bi-pencil-square edit__button editing"
+                    className={styles.edit__button + " " + styles.editing + " bi bi-pencil-square edit__button editing"}
                     data-bs-toggle="modal"
                     data-bs-target="#editSocials"
                   ></i>
-                  <h2 className="section-title">SOCIAL</h2>
+                  <h2 className={styles.sectionTitle}>SOCIAL</h2>
                 </div>
-                <div className="social__container bd-grid">
-                  <a href={jobSeeker?.githubLink} className="social__link">
-                    <i className="bx bxl-github"> </i> @github
+                <div className={styles.social__container + " " + styles.bdGrid + " bd-grid"}>
+                  <a href={jobSeeker?.githubLink} className={styles.social__link}>
+                    <i className={"bx bxl-github " + styles.social__icon}> </i> @github
                   </a>
-                  <a href={jobSeeker?.linkedinLink} className="social__link">
-                    <i className="bx bxl-linkedin-square social__icon"></i>{" "}
+                  <a href={jobSeeker?.linkedinLink} className={styles.social__link}>
+                    <i className={"bx bxl-linkedin-square " + styles.social__icon }></i>{" "}
                     @linkedin
                   </a>
-                  <a href={jobSeeker?.instagramLink} className="social__link">
-                    <i className="bx bxl-instagram social__icon"></i> @instagram
+                  <a href={jobSeeker?.instagramLink} className={styles.social__link}>
+                    <i className={"bx bxl-instagram " + styles.social__icon}></i> @instagram
                   </a>
-                  <a href={jobSeeker?.twitterLink} className="social__link">
-                    <i className="bx bxl-twitter social__icon"></i> @twitter
+                  <a href={jobSeeker?.twitterLink} className={styles.social__link}>
+                    <i className={"bx bxl-twitter " + styles.social__icon}></i> @twitter
                   </a>
                 </div>
               </section>
 
-              <section className="education section" id="educations">
-                <div className="education__header">
+              <section className={styles.education + " " + styles.section} id="educations">
+                <div className={styles.education__header}>
                   <i
-                    className="bi bi-plus-square-fill add__button editing"
+                    className={"bi bi-plus-square-fill " + styles.add__button + " " + styles.editing}
                     data-bs-toggle="modal"
                     data-bs-target="#addSchool"
                   ></i>
-                  <h2 className="section-title">Educations</h2>
+                  <h2 className={styles.sectionTitle}>Educations</h2>
                 </div>
-                <div className="education__container bd-grid">
+                <div className={styles.education__container + " " + styles.bdGrid + " bd-grid"}>
                   {schools?.map((school) => (
-                    <div className="education__content" key={school.id}>
-                      <div className="education__time">
-                        <span className="education__rounder"></span>
+                    <div className={styles.education__content} key={school.id}>
+                      <div className={styles.education__time}>
+                        <span className={styles.education__rounder}></span>
                         {schools.indexOf(school, -1) === -1 ? (
-                          <span className="education__line"></span>
+                          <span className={styles.education__line}></span>
                         ) : (
                           ""
                         )}
                       </div>
-                      <div className="education__data bd-grid col-9">
-                        <h3 className="education__title">
+                      <div className={styles.education__data + " " + styles.bdGrid + " bd-grid col-9"}>
+                        <h3 className={styles.education__title}>
                           {school.departmentName}
                         </h3>
-                        <span className="education__studies">
+                        <span className={styles.education__studies}>
                           {school.schoolName}
                         </span>
-                        <span className="education__year">
+                        <span className={styles.education__year}>
                           {school.startYear} -{" "}
                           {school.finishYear === 0 ? "..." : school.finishYear}
                         </span>
                       </div>
                       <div className="col-1">
                         <i
-                          className="bx bx-x delete__button editing del"
+                          className={styles.delete__button + " " + styles.editing + " " + styles.del + " bx bx-x delete__button editing" }
                           data-bs-target="#deleteModal"
                           data-bs-toggle="modal"
                         ></i>
@@ -223,44 +224,44 @@ export default function JobSeekerProfile() {
               </section>
             </div>
 
-            <div className="resume__right">
-              <section className="experience section" id="experiences">
+            <div className={styles.resume__right}>
+              <section className={styles.experience + " " + styles.section} id="experiences">
                 <i
-                  className="bi bi-plus-square-fill add__button editing right_add"
+                  className={styles.add__button + " " + styles.editing + " " + styles.right_add + " bi bi-plus-square-fill add__button editing right_add"}
                   data-bs-toggle="modal"
                   data-bs-target="#addExperience"
                 ></i>
-                <h2 className="section-title">Experiences</h2>
-                <div className="experience__conteiner bd-grid">
+                <h2 className={styles.sectionTitle}>Experiences</h2>
+                <div className={styles.experience__conteiner + " " + styles.bdGrid + " bd-grid"}>
                   {experiences?.map((experience) => (
-                    <div className="experience__content" key={experience.id}>
-                      <div className="experience__time">
-                        <span className="experience__rounder"></span>
+                    <div className={styles.experience__content} key={experience.id}>
+                      <div className={styles.experience__time}>
+                        <span className={styles.experience__rounder}></span>
                         {experiences.indexOf(experience, -1) === -1 ? (
-                          <span className="experience__line"></span>
+                          <span className={styles.experience__line}></span>
                         ) : (
                           ""
                         )}
                       </div>
 
-                      <div className="experience__data bd-grid col-9">
-                        <h3 className="experience__title">
+                      <div className={styles.experience__data + " " + styles.bdGrid +" bd-grid col-9"}>
+                        <h3 className={styles.experience__title}>
                           {experience.jobPosition.positionName}
                         </h3>
-                        <span className="experience__company">
+                        <span className={styles.experience__company}>
                           From <b>{experience.startDate.split("T")[0]}</b> to{" "}
                           <b>
                             {experience.finishDate?.split("T")[0] ?? " ... "}
                           </b>{" "}
                           | <b>{experience.workplaceName}</b>
                         </span>
-                        <p className="experience__description">
+                        <p className={styles.experience__description}>
                           {experience.experienceExplanation}
                         </p>
                       </div>
                       <div className="col-1">
                         <i
-                          className="bx bx-x delete__button editing del"
+                          className={styles.delete__button + " " + styles.editing  +" " + styles.del + " bx bx-x delete__button editing del"}
                           data-bs-target="#deleteModal"
                           data-bs-toggle="modal"
                         ></i>
@@ -270,17 +271,17 @@ export default function JobSeekerProfile() {
                 </div>
               </section>
 
-              <section className="certificate section" id="certificates">
-                <i className="bi bi-plus-square-fill add__button editing right_add"
+              <section className={styles.certificate + " " + styles.section} id="certificates">
+                <i className={styles.add__button + " " + styles.editing + " " + styles.right_add + " bi bi-plus-square-fill add__button editing right_add"}
                     data-bs-toggle="modal"
                     data-bs-target="#addCertificate"></i>
-                <h2 className="section-title">Certificates</h2>
+                <h2 className={styles.sectionTitle}>Certificates</h2>
 
-                <div className="certificate__container bd-grid">
+                <div className={styles.certificate__container + " " + styles.bdGrid + " bd-grid"}>
                   {certificates?.map((certificate) => (
-                    <div className="certificate__content" key={certificate.id}>
+                    <div className={styles.certificate__content} key={certificate.id}>
                       <div className="col-9">
-                        <h3 className="certificate__title">
+                        <h3 className={styles.certificate__title}>
                           {certificate.certificateTitle} (
                           {certificate.certificateYear})
                         </h3>
@@ -288,7 +289,7 @@ export default function JobSeekerProfile() {
 
                       <div className="col-1">
                         <i
-                          className="bx bx-x editing del"
+                          className={styles.editing + " " + styles.del + " bx bx-x editing del"}
                           data-bs-target="#deleteModal"
                           data-bs-toggle="modal"
                         ></i>
@@ -298,32 +299,32 @@ export default function JobSeekerProfile() {
                 </div>
               </section>
 
-              <section className="references section" id="references">
-                <i className="bi bi-plus-square-fill add__button editing right_add"
+              <section className={styles.references +" "+ styles.section} id="references">
+                <i className={styles.add__button + " " + styles.editing + " " + styles.right_add + " bi bi-plus-square-fill add__button editing right_add"}
                     data-bs-toggle="modal"
                     data-bs-target="#addReference"></i>
-                <h2 className="section-title">References</h2>
+                <h2 className={styles.sectionTitle}>References</h2>
 
-                <div className="references__container bd-grid">
+                <div className={styles.references__container+" "+ styles.bdGrid +" bd-grid"}>
                   {references?.map((reference) => (
                     <div
-                      className="references__content bd-grid"
+                      className={styles.references__content+" "+styles.bdGrid +" bd-grid"}
                       key={reference.id}
                     >
                       <div className="col-9">
-                        <span className="references__subtitle">
+                        <span className={styles.references__subtitle}>
                           {reference.referenceTitle}
                         </span>
-                        <h3 className="references__title">
+                        <h3 className={styles.references__title}>
                           {reference.referenceName}
                         </h3>
-                        <ul className="references__contect">
+                        <ul className={styles.references__contect}>
                           <li>{reference.referenceMail}</li>
                         </ul>
                       </div>
                       <div className="col-1">
                         <i
-                          className="bx bx-x editing delete__button del"
+                          className={styles.delete__button +" "+ styles.editing +" "+ styles.del + " bx bx-x editing delete__button del"}
                           data-bs-target="#deleteModal"
                           data-bs-toggle="modal"
                         ></i>
@@ -333,18 +334,20 @@ export default function JobSeekerProfile() {
                 </div>
               </section>
 
-              <section className="languages section" id="languages">
-                <i className="bi bi-plus-square-fill add__button editing language__add"
+              <section className={styles.languages +" "+ styles.section} id="languages">
+                <i className={styles.add__button +" "+ styles.editing +" "+ styles.language__add + " bi bi-plus-square-fill add__button editing language__add"}
                     data-bs-toggle="modal"
                     data-bs-target="#addLanguage"></i>
-                <h2 className="section-title">Languages</h2>
-                <div className="languages__container">
-                  <ul className="languages__content bd-grid">
+                <h2 className={styles.sectionTitle}>Languages</h2>
+                <div className={styles.languages__container}>
+                  <ul className={styles.languages__content +" "+ styles.bdGrid + " bd-grid"}>
                     {jobSeekerLanguages?.map((language) => (
-                      <li className="languages__name" key={language.id}>
-                        <span className="languages__circle"></span>{" "}
+                      <li className={styles.languages__name} key={language.id}>
+                        <span className={styles.languages__circle}></span>{" "}
                         {language.language.languageName}
                         <div>
+
+                          {/* when language unselect, star rate is hidden */}
                           <span className="star-rate">
                             <Rating
                               name="simple-controlled"
@@ -353,9 +356,9 @@ export default function JobSeekerProfile() {
                             />
                           </span>
                         </div>
-                        <div className="col-1 rate__delete">
+                        <div className={styles.rate__delete + " col-1"}>
                           <i
-                            className="bx bx-x editing del"
+                            className={styles.editing + " " + styles.del + " bx bx-x editing del"}
                             data-bs-target="#deleteModal"
                             data-bs-toggle="modal"
                           ></i>
@@ -366,22 +369,22 @@ export default function JobSeekerProfile() {
                 </div>
               </section>
 
-              <section className="skills section" id="skills">
-                <i className="bi bi-plus-square-fill add__button editing skills__add"
+              <section className={styles.skills +" "+ styles.section} id="skills">
+                <i className={styles.add__button +" "+ styles.editing +" "+ styles.skills__add +" bi bi-plus-square-fill add__button editing skills__add"}
                     data-bs-toggle="modal"
                     data-bs-target="#addSkill"></i>
-                <h2 className="section-title">Skills</h2>
-                <div className="skills__container">
-                  <ul className="skills__content bd-grid">
+                <h2 className={styles.sectionTitle}>Skills</h2>
+                <div className={styles.skills__container}>
+                  <ul className={styles.skills__content +" "+ styles.bdGrid +" bd-grid"}>
                     {jobSeekerSkills?.map((skill) => (
-                      <li className="skills__name" key={skill.id}>
+                      <li className={styles.skills__name} key={skill.id}>
                         <div>
-                          <span className="skills__circle"></span>{" "}
+                          <span className={styles.skills__circle}></span>{" "}
                           {skill.skill.skillName}
                         </div>
                         <div className="col-2">
                           <i
-                            className="bx bx-x editing del"
+                            className={styles.editing + " " + styles.del + " bx bx-x editing del"}
                             data-bs-target="#deleteModal"
                             data-bs-toggle="modal"
                           ></i>
@@ -392,22 +395,22 @@ export default function JobSeekerProfile() {
                 </div>
               </section>
 
-              <section className="positions section" id="positions">
-                <i className="bi bi-plus-square-fill add__button editing positions__add"
+              <section className={styles.positions +" "+ styles.section} id="positions">
+                <i className={styles.add__button +" "+ styles.editing +" "+ styles.positions__add +" bi bi-plus-square-fill add__button editing positions__add"}
                     data-bs-toggle="modal"
                     data-bs-target="#addPosition"></i>
-                <h2 className="section-title">Positions</h2>
-                <div className="positions__container">
-                  <ul className="positions__content bd-grid">
+                <h2 className={styles.sectionTitle}>Positions</h2>
+                <div className={styles.positions__container}>
+                  <ul className={styles.positions__content +" "+ styles.bdGrid + " bd-grid"}>
                     {jobSeekerPositions?.map((position) => (
-                      <li className="positions__name" key={position.id}>
+                      <li className={styles.positions__name} key={position.id}>
                         <div>
-                          <span className="positions__circle"></span>{" "}
+                          <span className={styles.positions__circle}></span>{" "}
                           {position.jobPosition.positionName}
                         </div>
                         <div className="col-2">
                           <i
-                            className="bx bx-x editing del"
+                            className={styles.editing + " " + styles.del + " bx bx-x editing del"}
                             data-bs-target="#deleteModal"
                             data-bs-toggle="modal"
                           ></i>
@@ -425,33 +428,33 @@ export default function JobSeekerProfile() {
       {/* DELETE MODAL */}
       <div
         id="deleteModal"
-        className="modal fade"
+        className={styles.modal +" "+ styles.fade +" modal fade"}
         tabIndex="-1"
         aria-hidden="true"
-      >
-        <div className="modal-dialog modal-confirm">
-          <div className="modal-content">
-            <div className="modal-header flex-column">
-              <div className="icon-box">
+      > 
+        <div className={styles.modalDialog +" "+ styles.modalConfirm +" modal-dialog modal-confirm"}>
+          <div className={styles.modalContent + " modal-content"}>
+            <div className={styles.modalHeader +" "+ " modal-header flex-column"}>
+              <div className={styles.iconBox + " icon-box"}>
                 <i className="bx bx-x"></i>
               </div>
-              <h4 className="modal-title w-100" id="delete-title">
+              <h4 className={styles.modalTitle +" "+ styles.deleteTitle +" modal-title w-100 delete-title"}>
                 Are you sure?
               </h4>
               <button
                 type="button"
-                className="btn-close close"
+                className={styles.close +" "+ styles.btnClose + " btn-close close"}
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">
+            <div className={styles.modalBody + " modal-body"}>
               <p>
                 Do you really want to delete these records? This process cannot
                 be undone.
               </p>
             </div>
-            <div className="modal-footer justify-content-center">
+            <div className={styles.modalFooter + " modal-footer justify-content-center"}>
               <button
                 type="button"
                 className="btn btn-secondary"
@@ -469,15 +472,15 @@ export default function JobSeekerProfile() {
 
       {/* EDİT CONTACT MODAL  */}
       <div
-        id="editContact"
-        className="modal fade"
+        id="editContact"  
+        className={styles.modal + " modal fade"}
         tabIndex="-1"
         aria-hidden="true"
       >
-        <div className="modal-dialog modal-confirm">
-          <div className="modal-content">
-            <div className="modal-header flex-column">
-              <h4 className="editContact-title w-100">Edit Contact</h4>
+        <div className={styles.modalDialog +" "+ styles.modalConfirm +" modal-dialog modal-confirm"}>
+          <div className={styles.modalContent + " modal-content"}>
+            <div className={styles.modalHeader + " "+ " modal-header flex-column"}>
+              <h4 className={styles.editContactTitle + " w-100"}>Edit Contact</h4>
               <button
                 type="button"
                 className="btn-close close"
@@ -496,20 +499,6 @@ export default function JobSeekerProfile() {
               </select>
               {jobSeeker ? (
                 <div>
-                  <TextField
-                    id="outlined-required"
-                    className="contactForm w-100"
-                    label="E-Mail"
-                    defaultValue={jobSeeker.email}
-                    variant="outlined"
-                  />
-                  <TextField
-                    id="outlined-required"
-                    className="contactForm w-100"
-                    label="Phone Number"
-                    defaultValue={jobSeeker?.phoneNumber}
-                    variant="outlined"
-                  />
                   <TextField
                     id="outlined-required"
                     className="contactForm w-100"
@@ -547,13 +536,13 @@ export default function JobSeekerProfile() {
       {/* EDİT Cover Letter MODAL  */}
       <div
         id="editCoverLetter"
-        className="modal fade"
+        className={styles.modal + " modal fade"}
         tabIndex="-1"
         aria-hidden="true"
       >
-        <div className="modal-dialog modal-confirm">
-          <div className="modal-content">
-            <div className="modal-header flex-column">
+        <div className={styles.modalDialog +" "+ styles.modalConfirm +" modal-dialog modal-confirm"}>
+          <div className={styles.modalContent + " modal-content"}>
+            <div className={styles.modalHeader + " "+ " modal-header flex-column"}>
               <h4 className="editContact-title w-100">Edit Cover Letter</h4>
               <button
                 type="button"
@@ -590,13 +579,13 @@ export default function JobSeekerProfile() {
       {/* EDİT Social Icons */}
       <div
         id="editSocials"
-        className="modal fade"
+        className={styles.modal + " modal fade"}
         tabIndex="-1"
         aria-hidden="true"
       >
-        <div className="modal-dialog modal-confirm">
-          <div className="modal-content">
-            <div className="modal-header flex-column">
+        <div className={styles.modalDialog +" "+ styles.modalConfirm +" modal-dialog modal-confirm"}>
+          <div className={styles.modalContent + " modal-content"}>
+            <div className={styles.modalHeader +" "+ styles.flexColumn +" modal-header flex-column"}>
               <h4 className="editContact-title w-100">Edit Contact</h4>
               <button
                 type="button"
@@ -658,13 +647,13 @@ export default function JobSeekerProfile() {
       {/* Add School */}
       <div
         id="addSchool"
-        className="modal fade"
+        className={styles.modal + " modal fade"}
         tabIndex="-1"
         aria-hidden="true"
       >
-        <div className="modal-dialog modal-confirm">
-          <div className="modal-content">
-            <div className="modal-header flex-column">
+        <div className={styles.modalDialog +" "+ styles.modalConfirm +" modal-dialog modal-confirm"}>
+          <div className={styles.modalContent + " modal-content"}>
+            <div className={styles.modalHeader + " "+ " modal-header flex-column"}>
               <h4 className="editContact-title w-100">Add Education</h4>
               <button
                 type="button"
@@ -737,13 +726,13 @@ export default function JobSeekerProfile() {
       {/* Add Experiene Icons */}
       <div
         id="addExperience"
-        className="modal fade"
+        className={styles.modal + " modal fade"}
         tabIndex="-1"
         aria-hidden="true"
       >
-        <div className="modal-dialog modal-confirm">
-          <div className="modal-content">
-            <div className="modal-header flex-column">
+        <div className={styles.modalDialog +" "+ styles.modalConfirm +" modal-dialog modal-confirm"}>
+          <div className={styles.modalContent + " modal-content"}>
+            <div className={styles.modalHeader + " "+ " modal-header flex-column"}>
               <h4 className="editContact-title w-100">Add Experience</h4>
               <button
                 type="button"
@@ -829,13 +818,13 @@ export default function JobSeekerProfile() {
       {/* Add Certificate Icons */}
       <div
         id="addCertificate"
-        className="modal fade"
+        className={styles.modal + " modal fade"}
         tabIndex="-1"
         aria-hidden="true"
       >
-        <div className="modal-dialog modal-confirm">
-          <div className="modal-content">
-            <div className="modal-header flex-column">
+        <div className={styles.modalDialog +" "+ styles.modalConfirm +" modal-dialog modal-confirm"}>
+          <div className={styles.modalContent + " modal-content"}>
+            <div className={styles.modalHeader + " "+ " modal-header flex-column"}>
               <h4 className="editContact-title w-100">Add Certificate</h4>
               <button
                 type="button"
@@ -886,13 +875,13 @@ export default function JobSeekerProfile() {
       {/* Add Reference Icons */}
       <div
         id="addReference"
-        className="modal fade"
+        className={styles.modal + " modal fade"}
         tabIndex="-1"
         aria-hidden="true"
       >
-        <div className="modal-dialog modal-confirm">
-          <div className="modal-content">
-            <div className="modal-header flex-column">
+        <div className={styles.modalDialog +" "+ styles.modalConfirm +" modal-dialog modal-confirm"}>
+          <div className={styles.modalContent + " modal-content"}>
+            <div className={styles.modalHeader + " "+ " modal-header flex-column"}>
               <h4 className="editContact-title w-100">Add Reference</h4>
               <button
                 type="button"
@@ -945,13 +934,13 @@ export default function JobSeekerProfile() {
       {/* Add Language */}
       <div
         id="addLanguage"
-        className="modal fade"
+        className={styles.modal + " modal fade"}
         tabIndex="-1"
         aria-hidden="true"
       >
-        <div className="modal-dialog modal-confirm">
-          <div className="modal-content">
-            <div className="modal-header flex-column">
+        <div className={styles.modalDialog +" "+ styles.modalConfirm +" modal-dialog modal-confirm"}>
+          <div className={styles.modalContent + " modal-content"}>
+            <div className={styles.modalHeader + " "+ " modal-header flex-column"}>
               <h4 className="editContact-title w-100">Add Language</h4>
               <button
                 type="button"
@@ -1015,13 +1004,13 @@ export default function JobSeekerProfile() {
       {/* Add Skill */}
       <div
         id="addSkill"
-        className="modal fade"
+        className={styles.modal + " modal fade"}
         tabIndex="-1"
         aria-hidden="true"
       >
-        <div className="modal-dialog modal-confirm">
-          <div className="modal-content">
-            <div className="modal-header flex-column">
+        <div className={styles.modalDialog +" "+ styles.modalConfirm +" modal-dialog modal-confirm"}>
+          <div className={styles.modalContent + " modal-content"}>
+            <div className={styles.modalHeader + " "+ " modal-header flex-column"}>
               <h4 className="editContact-title w-100">Add Skill</h4>
               <button
                 type="button"
@@ -1072,13 +1061,13 @@ export default function JobSeekerProfile() {
       {/* Add Position */}
       <div
         id="addPosition"
-        className="modal fade"
+        className={styles.modal + " modal fade"}
         tabIndex="-1"
         aria-hidden="true"
       >
-        <div className="modal-dialog modal-confirm">
-          <div className="modal-content">
-            <div className="modal-header flex-column">
+        <div className={styles.modalDialog +" "+ styles.modalConfirm +" modal-dialog modal-confirm"}>
+          <div className={styles.modalContent + " modal-content"}>
+            <div className={styles.modalHeader + " "+ " modal-header flex-column"}>
               <h4 className="editContact-title w-100">Add Position</h4>
               <button
                 type="button"

@@ -4,6 +4,7 @@ import "../../styles/swiper-bundle.min.css";
 import "../../styles/defaultMainPage.css";
 import {Swiper, SwiperSlide} from "swiper/react";
 import { Navigation, Thumbs } from "swiper";
+import Tooltip from '@mui/material/Tooltip';
 
  
 
@@ -33,12 +34,14 @@ export default function DefaultMainPage() {
                         modules={[Navigation, Thumbs]} 
                         thumbs={{swiper:activeThumb}}
                         direction= "horizontal"
-                        speed={600}
+                        speed={500}
                         simulateTouch={false}
                         navigation={{
                             prevEl: '.prev',
                             nextEl: '.next',
-                        }}>
+                        }}
+                        spaceBetween={0}
+                        >
                             <SwiperSlide style={{all: 'unset'}}>
                             <div 
                                 class="islands swiper-slide">
@@ -79,7 +82,7 @@ export default function DefaultMainPage() {
                             onSwiper={setActiveThumb}
                             simulateTouch={false}>
                            <SwiperSlide style={{all: 'unset'}} className="prev thumb__swip">
-                                <img src="https://github.com/erhangocen/hrms-frontend/blob/master/public/employee.jpg?raw=true" style={{width:"50%", borderRadius:"20%", marginLeft:"9%"}} alt="" class="controls__img swiper-slide"/>
+                                    <img src="https://github.com/erhangocen/hrms-frontend/blob/master/public/employee.jpg?raw=true" style={{width:"50%", borderRadius:"20%", marginLeft:"9%"}} alt="" class="controls__img swiper-slide"/>
                             </SwiperSlide>
                            <SwiperSlide style={{all: 'unset'}} className="next thumb__swip">
                                 <img src="https://github.com/erhangocen/hrms-frontend/blob/master/public/employer.jpg?raw=true" style={{width:"50%", borderRadius:"20%", marginLeft:"18%"}} alt="" class="controls__img swiper-slide"/>

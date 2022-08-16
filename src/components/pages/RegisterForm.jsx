@@ -9,6 +9,7 @@ import Select from '@mui/material/Select';
 import CityService from "../../services/CityService";
 import RegisterForJobSeeker from "../layouts/RegisterForJobSeeker";
 import RegisterForEmployer from "../layouts/RegisterForEmployer";
+import styles from "../../styles/loginRegister.module.css";
 
 export default function RegisterForm() {
 
@@ -22,7 +23,7 @@ export default function RegisterForm() {
     });
 
   return (
-    <form onsubmit="event.preventDefault()" class="login-box"> 
+    <div> 
       <h1>Register</h1> 
       <p class="text-muted mt-3"> Please enter fields!</p>  
 
@@ -51,44 +52,7 @@ export default function RegisterForm() {
           label="Phone Number"
           variant="outlined"
           autoComplete="off"
-      />   
-      <TextField
-          id="outlined-required"
-          className="registerForm w-100 mt-4" 
-          label="Email"
-          variant="outlined"
-          autoComplete="off"
-      />   
-      <TextField
-        id="outlined-required"
-        className="registerForm w-100 mt-4" 
-        label="Password"
-        variant="outlined"
-        autoComplete="off"
-      />      
-
-      <div class="form__button">
-          <input type="Submit" class="form__submit" value="Sign Up"/>
-      </div>
-      <div class="col-md-12"> 
-        <ul class="login-social-network social-circle"> 
-          <li>
-            <a href="#" class="icoFacebook" title="Facebook">
-              <i class='bx bxl-facebook'></i>
-            </a>
-          </li> 
-          <li>
-            <a href="#" class="icoTwitter" title="Twitter">
-              <i class='bx bxl-twitter' ></i>
-            </a>
-          </li> 
-          <li>
-            <a href="#" class="icoGoogle" title="Google +">
-              <i class='bx bxl-google' ></i>
-            </a>
-          </li> 
-        </ul> 
-      </div> 
-    </form>
+      />       
+    </div>
   )
 }

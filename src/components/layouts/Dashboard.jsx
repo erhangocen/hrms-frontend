@@ -9,8 +9,8 @@ import Profile from './Profile'
 export default function Dashboard() {
   return (
     <div> 
-        {/* <Profile/> */}
-        <MainPage/>
+        <Profile/>
+        {/* <MainPage/> */}
         {/* <AdvertisementDetails/> */}
         {/* <AdminPanel/> */}
         {/* <Form/> */}

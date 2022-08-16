@@ -36,7 +36,7 @@ export default function () {
 
   return (
     <div>
-      <Tooltip title="Account settings">
+      <Tooltip disableHoverListener disableTouchListener>
               <IconButton
                 onClick={handleClick}
                 size="small"

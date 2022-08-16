@@ -231,29 +231,9 @@ img {
   .controls__container {
     column-gap: .25rem;
   }
-  .islands__popup-video {
-    width: 230px;
-    height: 100px;
-  }
 }
 
 @media screen and (min-width: 768px) {
-  .nav {
-    height: calc(var(--header-height) + 1.5rem);
-  }
-  .nav__list {
-    display: flex;
-  }
-  .nav__item {
-    margin-right: 2rem;
-    margin-bottom: 0;
-  }
-  .nav__link {
-    color: var(--body-color);
-  }
-  .nav__toggle {
-    display: none;
-  }
   .islands__container {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -292,6 +272,9 @@ img {
 /* For tall screens on mobiles y desktop*/
 @media screen and (min-height: 721px) {
   .islands {
-    height: 640px;
+    height: 749px;
+  }
+  .gallery-thumbs{
+    padding-right: 21px;
   }
 }
