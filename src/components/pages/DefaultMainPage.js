@@ -46,7 +46,7 @@ export default function DefaultMainPage() {
                             <div 
                                 class="islands swiper-slide">
                             <img src="https://github.com/erhangocen/hrms-frontend/blob/master/public/defaultMainPageJobSeekerPart3.png?raw=true" alt="" class="islands__bg"/>
-
+ 
                             <div class="islands__container bd-container">
                                 <div class="islands__data">
                                     <h2 class="islands__subtitle">kariyer.net</h2>

@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField';
 export default function Form() {
   return (
     <div>
-      <div class="container"> 
+      <div class="container">
         <div class="row"> 
           <div class="col-md-6"> 
             <div class={styles.loginCard}> 

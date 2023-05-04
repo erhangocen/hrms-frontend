@@ -8,7 +8,7 @@ import Profile from './Profile'
 
 export default function Dashboard() {
   return (
-    <div> 
+    <div>
         <Profile/>
         {/* <MainPage/> */}
         {/* <AdvertisementDetails/> */}
